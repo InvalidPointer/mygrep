@@ -12,7 +12,7 @@
 
 using namespace std;
 
-enum token_type {STR, ENUM, ITER, O_BR, C_BR};
+enum token_type {O_BR_T, C_BR_T, ENUM_T, STR_T, ITER_T}; //Sorted by priorities except brackets
 
 struct token
 {

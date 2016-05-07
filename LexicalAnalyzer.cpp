@@ -14,7 +14,6 @@ bool isspecial(char ch)
 vector<token> LexicalAnalyzer::analyze(const string &expr)
 {
     vector<token> toks;
-    string term_concat = "";
 
     bool escaped = false;
     for (auto it = expr.begin(); it < expr.end(); it++) {
@@ -22,36 +21,25 @@ vector<token> LexicalAnalyzer::analyze(const string &expr)
             throw invalid_argument("Invalid symbol in regex!");
         }
 
-        if (!isspecial(*it)) {
-            term_concat += *it;
-        } else if (escaped) {
-            if (isspecial(*it)) {
-                term_concat += *it;
-            } else {
+        if (!isspecial(*it) || escaped) {
+            if (!isspecial(*it) && escaped) {
                 throw invalid_argument("Invalid escape character!");
             }
+            toks.push_back(token {STR_T, string(1, *it)});
             escaped = false;
         } else {
-            if (!term_concat.empty() && *it != '\\') {
-                toks.push_back(token {STR, term_concat});
-                term_concat = "";
-            }
-
             if (*it == '|') {
-                toks.push_back(token {ENUM, "|"});
+                toks.push_back(token {ENUM_T, "|"});
             } else if (*it == '*') {
-                toks.push_back(token {ITER, "*"});
+                toks.push_back(token {ITER_T, "*"});
             } else if (*it == '(') {
-                toks.push_back(token {O_BR, "("});
+                toks.push_back(token {O_BR_T, "("});
             } else if (*it == ')') {
-                toks.push_back(token {C_BR, ")"});
+                toks.push_back(token {C_BR_T, ")"});
             } else if (*it == '\\') {
                 escaped = true;
             }
         }
-    }
-    if (!term_concat.empty()) {
-        toks.push_back(token {STR, term_concat});
     }
 
     return toks;
