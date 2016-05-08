@@ -5,8 +5,15 @@
 #ifndef MYGREP_SYNTAXANALYZER_H
 #define MYGREP_SYNTAXANALYZER_H
 
-#include "LexicalAnalyzer.h"
+
+#include <string>
+#include <vector>
 #include <stack>
+#include <algorithm>
+
+#include "token.h"
+
+using namespace std;
 
 class SyntaxAnalyzer
 {
@@ -15,7 +22,8 @@ public:
     SyntaxAnalyzer() {}
     ~SyntaxAnalyzer() {}
 
-    vector<token> analyze(vector<token> raw_tokens);
+    static vector<token> analyze(vector<token> raw_tokens);
 };
+
 
 #endif //MYGREP_SYNTAXANALYZER_H
