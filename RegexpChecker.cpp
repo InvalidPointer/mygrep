@@ -32,6 +32,9 @@ bool RegexpChecker::check_op()
         case ENUM_T:
             svit++;
             return op_enum();
+        case ITER_T:
+            svit++;
+            return op_iter();
     }
 
     return true;
@@ -64,6 +67,16 @@ bool RegexpChecker::op_enum()
 
 bool RegexpChecker::op_iter()
 {
+    vector<token>::const_iterator base_it = svit;
+    skip_op();
+    do {
+        RegexpChecker rc(sv, target, svit, tit);
+        if (rc.check()) {
+            return true;
+        }
+        svit = base_it;
+    } while (check_op());
+
     return false;
 }
 
