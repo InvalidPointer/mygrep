@@ -16,6 +16,7 @@ vector<token> LexicalAnalyzer::analyze(const string &expr)
     vector<token> toks;
 
     bool escaped = false;
+    token_type prev_t = CAT_T;
     for (auto it = expr.begin(); it < expr.end(); it++) {
         if (!isgraph(*it)) {
             throw invalid_argument("Invalid symbol in regex!");
@@ -24,6 +25,9 @@ vector<token> LexicalAnalyzer::analyze(const string &expr)
         if (!isspecial(*it) || escaped) {
             if (!isspecial(*it) && escaped) {
                 throw invalid_argument("Invalid escape character!");
+            }
+            if (prev_t == STR_T) {
+                toks.push_back(token {CAT_T, ""});
             }
             toks.push_back(token {STR_T, string(1, *it)});
             escaped = false;
@@ -40,6 +44,7 @@ vector<token> LexicalAnalyzer::analyze(const string &expr)
                 escaped = true;
             }
         }
+        prev_t = toks.back().type;
     }
 
     return toks;

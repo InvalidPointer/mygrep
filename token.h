@@ -2,7 +2,7 @@
 #define TOKEN_H
 
 
-enum token_type {O_BR_T, C_BR_T, ENUM_T, STR_T, ITER_T}; //Sorted by priorities except brackets and check
+enum token_type {O_BR_T, C_BR_T, ENUM_T, STR_T, CAT_T, ITER_T}; //Sorted by priorities except brackets and check
 
 struct token
 {

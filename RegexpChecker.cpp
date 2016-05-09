@@ -26,12 +26,18 @@ bool RegexpChecker::check()
 
 bool RegexpChecker::check_op()
 {
+    left_params++;
     switch (svit->type) {
         case STR_T:
             return op_str();
         case ENUM_T:
             svit++;
+            left_params++;
             return op_enum();
+        case CAT_T:
+            svit++;
+            left_params++;
+            return op_cat();
         case ITER_T:
             svit++;
             return op_iter();
@@ -47,9 +53,8 @@ bool RegexpChecker::op_str()
         tit += svit->lexeme.size();
     }
 
-    //cout << *target << " " << tit - target->begin() << " " << svit->lexeme.size() << " " << svit->lexeme << " " << res << endl;
-
     svit++;
+    left_params--;
 
     return res;
 }
@@ -57,19 +62,31 @@ bool RegexpChecker::op_str()
 
 bool RegexpChecker::op_enum()
 {
-    if (check_op()) {
+    if (left_params--, check_op()) {
         skip_op();
+        left_params--;
         return true;
     }
 
-    return check_op();
+    return left_params--, check_op();
+}
+
+bool RegexpChecker::op_cat()
+{
+    return (left_params--, check_op()) && (left_params--, check_op());
 }
 
 bool RegexpChecker::op_iter()
 {
+    left_params--;
+
     vector<token>::const_iterator base_it = svit;
+    string::const_iterator base_tit = tit;
     skip_op();
     do {
+        for (int i = 0; i < left_params; i++) {
+            skip_op();
+        }
         RegexpChecker rc(sv, target, svit, tit);
         if (rc.check()) {
             return true;
@@ -77,6 +94,7 @@ bool RegexpChecker::op_iter()
         svit = base_it;
     } while (check_op());
 
+    tit = base_tit;
     return false;
 }
 
@@ -87,6 +105,7 @@ void RegexpChecker::skip_op()
             svit++;
             break;
         case ENUM_T:
+        case CAT_T:
             svit++;
             skip_op();
             skip_op();

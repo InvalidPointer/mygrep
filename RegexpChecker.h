@@ -21,9 +21,12 @@ private:
     string *target;
     string::const_iterator tit;
 
+    int left_params = 0;
+
     bool check_op();
     bool op_str();
     bool op_enum();
+    bool op_cat();
     bool op_iter();
 
     void skip_op();
