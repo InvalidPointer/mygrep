@@ -27,7 +27,7 @@ private:
     bool op_str();
     bool op_enum();
     bool op_cat();
-    bool op_iter();
+    bool op_iter(int min = 0, int max = -1);
 
     void skip_op();
 public:

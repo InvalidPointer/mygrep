@@ -7,7 +7,7 @@
 
 bool isspecial(char ch)
 {
-    return string("|*()\\").find(ch) != string::npos;
+    return string(".?+|*()\\").find(ch) != string::npos;
 }
 
 
@@ -32,16 +32,33 @@ vector<token> LexicalAnalyzer::analyze(const string &expr)
             toks.push_back(token {STR_T, string(1, *it)});
             escaped = false;
         } else {
-            if (*it == '|') {
-                toks.push_back(token {ENUM_T, "|"});
-            } else if (*it == '*') {
-                toks.push_back(token {ITER_T, "*"});
-            } else if (*it == '(') {
-                toks.push_back(token {O_BR_T, "("});
-            } else if (*it == ')') {
-                toks.push_back(token {C_BR_T, ")"});
-            } else if (*it == '\\') {
-                escaped = true;
+            switch (*it) {
+                case '.':
+                    toks.push_back(token {STR_T, "."});
+                    break;
+                case '|':
+                    toks.push_back(token {ENUM_T, "|"});
+                    break;
+                case '+':
+                    toks.push_back(token {ITER_OM_T, "+"});
+                    break;
+                case '?':
+                    toks.push_back(token {ITER_ZO_T, "?"});
+                    break;
+                case '*':
+                    toks.push_back(token {ITER_ZM_T, "*"});
+                    break;
+                case '(':
+                    toks.push_back(token {O_BR_T, "("});
+                    break;
+                case ')':
+                    toks.push_back(token {C_BR_T, ")"});
+                    break;
+                case '\\':
+                    escaped = true;
+                    break;
+                default:
+                    break;
             }
         }
         prev_t = toks.back().type;
@@ -49,5 +66,3 @@ vector<token> LexicalAnalyzer::analyze(const string &expr)
 
     return toks;
 }
-
-

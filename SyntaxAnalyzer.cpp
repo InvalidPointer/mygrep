@@ -7,9 +7,11 @@
 
 void flush_buf(string &buf, vector<token> &toks)
 {
-    reverse(buf.begin(), buf.end());
-    toks.push_back(token {STR_T, buf});
-    buf = "";
+    if (!buf.empty()) {
+        reverse(buf.begin(), buf.end());
+        toks.push_back(token {STR_T, buf});
+        buf = "";
+    }
 }
 
 vector<token> SyntaxAnalyzer::analyze(vector<token> raw_tokens)
@@ -19,17 +21,24 @@ vector<token> SyntaxAnalyzer::analyze(vector<token> raw_tokens)
     stack<token> ops;
     string buf = "";
     for (auto it = raw_tokens.rbegin(); it < raw_tokens.rend(); it++) {
-        if (!buf.empty() && it->type != STR_T && it->type != CAT_T) {
+        if (it->type != STR_T && it->type != CAT_T) {
             flush_buf(buf, pf_tokens);
         }
 
         switch (it->type) {
             case STR_T:
-                buf += it->lexeme;
+                if (!it->lexeme.compare(".")) {
+                    flush_buf(buf, pf_tokens);
+                    pf_tokens.push_back(*it);
+                } else {
+                    buf += it->lexeme;
+                }
                 break;
             case ENUM_T:
-            case ITER_T:
-                while (!ops.empty() && it->type < ops.top().type && ops.top().type != C_BR_T) {
+            case ITER_OM_T:
+            case ITER_ZO_T:
+            case ITER_ZM_T:
+                while (!ops.empty() && prior[it->type] < prior[ops.top().type] && ops.top().type != C_BR_T) {
                     pf_tokens.push_back(ops.top());
                     ops.pop();
                 }
@@ -38,7 +47,7 @@ vector<token> SyntaxAnalyzer::analyze(vector<token> raw_tokens)
             case CAT_T:
                 if (it - 2 >= raw_tokens.rbegin() && (it - 2)->type > CAT_T) {
                     flush_buf(buf, pf_tokens);
-                    while (!ops.empty() && CAT_T < ops.top().type && ops.top().type != C_BR_T) {
+                    while (!ops.empty() && prior[CAT_T] < prior[ops.top().type] && ops.top().type != C_BR_T) {
                         pf_tokens.push_back(ops.top());
                         ops.pop();
                     }
@@ -57,9 +66,7 @@ vector<token> SyntaxAnalyzer::analyze(vector<token> raw_tokens)
                 break;
         }
     }
-    if (!buf.empty()) {
-        flush_buf(buf, pf_tokens);
-    }
+    flush_buf(buf, pf_tokens);
     while (!ops.empty()) {
         if (ops.top().type == C_BR_T) {
             throw invalid_argument("Brackets amount mismatch!");
