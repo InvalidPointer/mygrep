@@ -14,8 +14,8 @@ int main()
         cout << "Lexeme: " << it->lexeme << " Token: " << it->type << endl;
     }
 
-    Regexp r("a?b");
-    cout << r.match("aab") << endl;
+    Regexp r("a*|c");
+    cout << r.match("c") << endl;
 
     return 0;
 }

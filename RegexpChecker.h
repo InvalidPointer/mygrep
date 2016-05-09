@@ -21,7 +21,7 @@ private:
     string *target;
     string::const_iterator tit;
 
-    int left_params = 0;
+    int skip_params = 0;
 
     bool check_op();
     bool op_str();

@@ -27,17 +27,14 @@ bool RegexpChecker::check()
 
 bool RegexpChecker::check_op()
 {
-    left_params++;
     switch (svit->type) {
         case STR_T:
             return op_str();
         case ENUM_T:
             svit++;
-            left_params++;
             return op_enum();
         case CAT_T:
             svit++;
-            left_params++;
             return op_cat();
         case ITER_OM_T:
             svit++;
@@ -59,9 +56,7 @@ bool RegexpChecker::op_str()
     if (res) {
         tit += svit->lexeme.size();
     }
-
     svit++;
-    left_params--;
 
     return res;
 }
@@ -69,24 +64,23 @@ bool RegexpChecker::op_str()
 
 bool RegexpChecker::op_enum()
 {
-    if (left_params--, check_op()) {
+    skip_params++;
+    if (check_op()) {
         skip_op();
-        left_params--;
+        skip_params--;
         return true;
     }
 
-    return left_params--, check_op();
+    return skip_params--, check_op();
 }
 
 bool RegexpChecker::op_cat()
 {
-    return (left_params--, check_op()) && (left_params--, check_op());
+    return check_op() && check_op();
 }
 
 bool RegexpChecker::op_iter(int min, int max)
 {
-    left_params--;
-
     if (min < 0 || (max != -1 && min > max)) {
         throw invalid_argument("Error iter boundaries!");
     }
@@ -97,7 +91,7 @@ bool RegexpChecker::op_iter(int min, int max)
     string::const_iterator base_tit = tit, prev_tit = tit;
     skip_op();
     do {
-        for (int i = 0; i < left_params; i++) {
+        for (int i = 0; i < skip_params; i++) {
             skip_op();
         }
         RegexpChecker rc(sv, target, svit, tit);
