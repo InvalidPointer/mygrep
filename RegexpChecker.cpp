@@ -45,6 +45,11 @@ bool RegexpChecker::check_op()
         case ITER_ZM_T:
             svit++;
             return op_iter();
+        case ITER_N_T: {
+            svit++;
+            int pos = (svit - 1)->lexeme.find(",");
+            return op_iter(stoi((svit - 1)->lexeme.substr(0, pos)), stoi((svit - 1)->lexeme.substr(pos + 1)));
+        }
     }
 
     return true;
@@ -128,6 +133,7 @@ void RegexpChecker::skip_op()
         case ITER_OM_T:
         case ITER_ZO_T:
         case ITER_ZM_T:
+        case ITER_N_T:
             svit++;
             skip_op();
             break;

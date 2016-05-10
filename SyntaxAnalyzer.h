@@ -10,6 +10,7 @@
 #include <vector>
 #include <stack>
 #include <algorithm>
+#include <stdexcept>
 
 #include "token.h"
 

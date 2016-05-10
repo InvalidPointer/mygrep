@@ -38,6 +38,7 @@ vector<token> SyntaxAnalyzer::analyze(vector<token> raw_tokens)
             case ITER_OM_T:
             case ITER_ZO_T:
             case ITER_ZM_T:
+            case ITER_N_T:
                 while (!ops.empty() && prior[it->type] < prior[ops.top().type] && ops.top().type != C_BR_T) {
                     pf_tokens.push_back(ops.top());
                     ops.pop();
