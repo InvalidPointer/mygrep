@@ -6,23 +6,24 @@
 #include <stdexcept>
 #include "RegexpChecker.h"
 
-RegexpChecker::RegexpChecker(vector<token> *v, string *s, vector<token>::const_iterator vit, string::const_iterator sit)
+RegexpChecker::RegexpChecker(vector<token> *v, string *s, vector<token>::const_iterator vit, string::const_iterator sit, bool search):
+    sv(v),
+    svit(vit),
+    target(s),
+    tit(sit),
+    search(search)
 {
-    sv = v;
-    svit = vit;
-    target = s;
-    tit = sit;
 }
 
-bool RegexpChecker::check()
+rc_result RegexpChecker::check()
 {
     for ( ; svit < sv->end() && tit < target->end(); ) {
         if (!check_op()) {
-            return false;
+            return rc_result {false, 0};
         }
     }
 
-    return (svit == sv->end() && tit == target->end());
+    return rc_result {(svit == sv->end() && (tit == target->end() || search)), tit - target->begin()};
 }
 
 bool RegexpChecker::check_op()
@@ -99,8 +100,8 @@ bool RegexpChecker::op_iter(int min, int max)
         for (int i = 0; i < skip_params; i++) {
             skip_op();
         }
-        RegexpChecker rc(sv, target, svit, tit);
-        if (rc.check() && iter_count >= min) {
+        RegexpChecker rc(sv, target, svit, tit, search);
+        if (rc.check().status && iter_count >= min) {
             found = true;
         } else if (found) {
             tit = prev_tit;

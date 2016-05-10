@@ -13,6 +13,12 @@
 
 using namespace std;
 
+struct rc_result
+{
+    bool status;
+    int len;
+};
+
 class RegexpChecker
 {
 private:
@@ -20,6 +26,8 @@ private:
     vector<token>::const_iterator svit;
     string *target;
     string::const_iterator tit;
+
+    bool search;
 
     int skip_params = 0;
 
@@ -31,10 +39,10 @@ private:
 
     void skip_op();
 public:
-    RegexpChecker(vector<token> *v, string *s, vector<token>::const_iterator vit, string::const_iterator sit);
+    RegexpChecker(vector<token> *v, string *s, vector<token>::const_iterator vit, string::const_iterator sit, bool search = false);
     ~RegexpChecker() {}
 
-    bool check();
+    rc_result check();
 };
 
 

@@ -19,6 +19,7 @@ public:
     ~Regexp() {}
 
     bool match(string target);
+    string search(string target);
 };
 
 
