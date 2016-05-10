@@ -8,7 +8,7 @@
 
 bool isspecial(char ch)
 {
-    return string(".?+{}*|()\\").find(ch) != string::npos;
+    return string(".?+{}*[-]|()\\").find(ch) != string::npos;
 }
 
 inline string is_num(const string &s)
@@ -87,7 +87,7 @@ vector<token> LexicalAnalyzer::analyze(const string &expr)
                     escaped = true;
                     break;
                 default:
-                    break;
+                    throw invalid_argument("Unescaped special symbol!");
             }
         }
         prev_t = toks.back().type;
