@@ -19,7 +19,7 @@ public:
     ~Regexp() {}
 
     bool match(const string &target) const;
-    string search(const string &target) const;
+    rc_result search(const string &target) const;
 };
 
 

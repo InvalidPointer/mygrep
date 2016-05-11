@@ -8,13 +8,13 @@ all: $(BIN)/mygrep
 $(BIN)/mygrep: $(BIN)/mygrep.o $(BIN)/Regexp.o $(BIN)/RegexpChecker.o $(BIN)/SyntaxAnalyzer.o $(BIN)/LexicalAnalyzer.o
 		$(CC) -o $(BIN)/mygrep $(BIN)/mygrep.o $(BIN)/Regexp.o $(BIN)/RegexpChecker.o $(BIN)/SyntaxAnalyzer.o $(BIN)/LexicalAnalyzer.o
 
-$(BIN)/mygrep.o: main.cpp Regexp.h SyntaxAnalyzer.h LexicalAnalyzer.h | $(BIN)
+$(BIN)/mygrep.o: main.cpp Regexp.h | $(BIN)
 		$(CC) $(CFLAGS) -c -o $(BIN)/mygrep.o main.cpp
 
 $(BIN)/Regexp.o: Regexp.cpp Regexp.h RegexpChecker.h SyntaxAnalyzer.h LexicalAnalyzer.h | $(BIN)
 		$(CC) $(CFLAGS) -c -o $(BIN)/Regexp.o Regexp.cpp
         
-$(BIN)/RegexpChecker.o: RegexpChecker.cpp RegexpChecker.h token.h | $(BIN)
+$(BIN)/RegexpChecker.o: RegexpChecker.cpp RegexpChecker.h token.h rc_result.h | $(BIN)
 		$(CC) $(CFLAGS) -c -o $(BIN)/RegexpChecker.o RegexpChecker.cpp
 
 $(BIN)/SyntaxAnalyzer.o: SyntaxAnalyzer.cpp SyntaxAnalyzer.h token.h | $(BIN)

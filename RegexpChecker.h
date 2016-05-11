@@ -11,14 +11,9 @@
 #include <stdexcept>
 
 #include "token.h"
+#include "rc_result.h"
 
 using namespace std;
-
-struct rc_result
-{
-    bool status;
-    int len;
-};
 
 class RegexpChecker
 {
@@ -26,6 +21,7 @@ private:
     const vector<token> *sv;
     vector<token>::const_iterator svit;
     const string *target;
+    const string::const_iterator btit;
     string::const_iterator tit;
 
     bool search;

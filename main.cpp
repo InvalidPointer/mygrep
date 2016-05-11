@@ -1,22 +1,38 @@
 #include <iostream>
-#include "LexicalAnalyzer.h"
-#include "SyntaxAnalyzer.h"
+#include <cstring>
 #include "Regexp.h"
 
 using namespace std;
 
-int main()
+int main(int argc, char **argv)
 {
-    //vector<token> lv = la.analyze("123|a*|321|\\*abc\\\\");
-    vector<token> lv = LexicalAnalyzer::analyze("(ab*|c)d|qt{1,2}*");
-    SyntaxAnalyzer sa(lv);
-    vector<token> sv = sa.analyze();
-    for (auto it = sv.begin(); it < sv.end(); it++) {
-        cout << "Lexeme: " << it->lexeme << " Token: " << it->type << endl;
+    if (argc < 2 || argc > 3) {
+        cout << "Wrong number of params! Usage: " << argv[0] << " %regexp% [search]" << endl;
+        return 0;
     }
 
-    Regexp r("l.");
-    cout << "'" << r.search("hjklaaaaaddabedfbdfdbsbba") << "'" << endl;
+    Regexp r(argv[1]);
+    if (argc == 3) {
+        if (!strcmp(argv[2], "search")) {
+            string str;
+            while (cin >> str) {
+                rc_result res = r.search(str);
+                if (res.status) {
+                    cout << res.result << endl;
+                }
+            }
+        } else {
+            cout << "Wrong param! Usage: " << argv[0] << " %regexp% [search]" << endl;
+            return 0;
+        }
+    } else {
+        string str;
+        while (cin >> str) {
+            if (r.match(str)) {
+                cout << str << endl;
+            }
+        }
+    }
 
     return 0;
 }

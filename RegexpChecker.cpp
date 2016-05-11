@@ -8,6 +8,7 @@ RegexpChecker::RegexpChecker(const vector<token> *v, const string *s, vector<tok
     sv(v),
     svit(vit),
     target(s),
+    btit(sit),
     tit(sit),
     search(search)
 {
@@ -17,11 +18,12 @@ rc_result RegexpChecker::check()
 {
     for ( ; svit < sv->end() && tit < target->end(); ) {
         if (!check_op()) {
-            return rc_result {false, 0};
+            return rc_result {false, ""};
         }
     }
 
-    return rc_result {(svit == sv->end() && (tit == target->end() || search)), static_cast<int>(tit - target->begin())};
+    return rc_result {(svit == sv->end() && (tit == target->end() || search)),
+                      target->substr(btit - target->begin(), static_cast<int>(tit - btit))};
 }
 
 bool RegexpChecker::check_op()

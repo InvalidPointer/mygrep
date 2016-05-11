@@ -16,15 +16,15 @@ bool Regexp::match(const string &target) const
     return rc.check().status;
 }
 
-string Regexp::search(const string &target) const
+rc_result Regexp::search(const string &target) const
 {
     for (auto tit = target.begin(); tit < target.end(); tit++) {
         RegexpChecker rc(&sv, &target, sv.begin(), tit, true);
         rc_result r = rc.check();
         if (r.status) {
-            return target.substr(tit - target.begin(), r.len - (tit - target.begin()));
+            return r;
         }
     }
 
-    return "";
+    return rc_result {false, ""};
 }
