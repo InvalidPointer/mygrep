@@ -6,7 +6,8 @@
 
 Regexp::Regexp(string pattern)
 {
-    //sv = SyntaxAnalyzer::analyze(LexicalAnalyzer::analyze(pattern));
+    SyntaxAnalyzer sa(LexicalAnalyzer::analyze(pattern));
+    sv = sa.analyze();
 }
 
 bool Regexp::match(string target)
