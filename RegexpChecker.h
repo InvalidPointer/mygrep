@@ -8,6 +8,7 @@
 
 #include <vector>
 #include <string>
+#include <stdexcept>
 
 #include "token.h"
 
@@ -22,9 +23,9 @@ struct rc_result
 class RegexpChecker
 {
 private:
-    vector<token> *sv;
+    const vector<token> *sv;
     vector<token>::const_iterator svit;
-    string *target;
+    const string *target;
     string::const_iterator tit;
 
     bool search;
@@ -39,7 +40,7 @@ private:
 
     void skip_op();
 public:
-    RegexpChecker(vector<token> *v, string *s, vector<token>::const_iterator vit, string::const_iterator sit, bool search = false);
+    RegexpChecker(const vector<token> *v, const string *s, vector<token>::const_iterator vit, string::const_iterator sit, bool search = false);
     ~RegexpChecker() {}
 
     rc_result check();

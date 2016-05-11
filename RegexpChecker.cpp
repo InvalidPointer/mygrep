@@ -2,11 +2,9 @@
 // Created by InvalidPointer on 5/8/2016.
 //
 
-#include <iostream>
-#include <stdexcept>
 #include "RegexpChecker.h"
 
-RegexpChecker::RegexpChecker(vector<token> *v, string *s, vector<token>::const_iterator vit, string::const_iterator sit, bool search):
+RegexpChecker::RegexpChecker(const vector<token> *v, const string *s, vector<token>::const_iterator vit, string::const_iterator sit, bool search):
     sv(v),
     svit(vit),
     target(s),
@@ -82,7 +80,14 @@ bool RegexpChecker::op_enum()
 
 bool RegexpChecker::op_cat()
 {
-    return check_op() && check_op();
+    skip_params++;
+    if (!check_op()) {
+        skip_op();
+        skip_params--;
+        return false;
+    }
+
+    return skip_params--, check_op();
 }
 
 bool RegexpChecker::op_iter(int min, int max)

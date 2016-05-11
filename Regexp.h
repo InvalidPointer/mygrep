@@ -15,11 +15,11 @@ class Regexp
 private:
     vector<token> sv;
 public:
-    Regexp(string pattern);
+    Regexp(const string &pattern);
     ~Regexp() {}
 
-    bool match(string target);
-    string search(string target);
+    bool match(const string &target) const;
+    string search(const string &target) const;
 };
 
 

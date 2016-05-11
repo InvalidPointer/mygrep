@@ -15,12 +15,11 @@
 
 using namespace std;
 
-bool isspecial(char ch);
-
 class LexicalAnalyzer
 {
 private:
-
+    static bool isspecial(char ch);
+    static string is_num(const string &s);
 public:
     LexicalAnalyzer() {}
     ~LexicalAnalyzer() {}

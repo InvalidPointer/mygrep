@@ -4,12 +4,12 @@
 
 #include "LexicalAnalyzer.h"
 
-bool isspecial(char ch)
+bool LexicalAnalyzer::isspecial(char ch)
 {
     return string(".?+{}*[-]|()\\").find(ch) != string::npos;
 }
 
-inline string is_num(const string &s)
+string LexicalAnalyzer::is_num(const string &s)
 {
     return to_string(stoi(s));
 }
