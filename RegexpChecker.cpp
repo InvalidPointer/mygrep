@@ -21,7 +21,7 @@ rc_result RegexpChecker::check()
         }
     }
 
-    return rc_result {(svit == sv->end() && (tit == target->end() || search)), tit - target->begin()};
+    return rc_result {(svit == sv->end() && (tit == target->end() || search)), static_cast<int>(tit - target->begin())};
 }
 
 bool RegexpChecker::check_op()
