@@ -2,9 +2,7 @@
 // Created by InvalidPointer on 07.05.2016.
 //
 
-#include <iostream>
 #include "LexicalAnalyzer.h"
-
 
 bool isspecial(char ch)
 {

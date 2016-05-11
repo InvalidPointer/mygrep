@@ -2,82 +2,137 @@
 // Created by InvalidPointer on 07.05.2016.
 //
 
-#include <iostream>
 #include "SyntaxAnalyzer.h"
 
-void flush_buf(string &buf, vector<token> &toks)
+SyntaxAnalyzer::SyntaxAnalyzer(const vector<token> &tokens)
+{
+    raw_tokens = tokens;
+    init();
+}
+
+void SyntaxAnalyzer::init()
+{
+    it = raw_tokens.begin();
+    pf_tokens.clear();
+    brackets_count = 0;
+    buf = "";
+}
+
+void SyntaxAnalyzer::flush_buf()
 {
     if (!buf.empty()) {
-        reverse(buf.begin(), buf.end());
-        toks.push_back(token {STR_T, buf});
+        pf_tokens.push_back(token {STR_T, buf});
         buf = "";
     }
 }
 
-vector<token> SyntaxAnalyzer::analyze(vector<token> raw_tokens)
+void SyntaxAnalyzer::E(bool last)
 {
-    vector<token> pf_tokens;
-
-    stack<token> ops;
-    string buf = "";
-    for (auto it = raw_tokens.rbegin(); it < raw_tokens.rend(); it++) {
-        if (it->type != STR_T && it->type != CAT_T) {
-            flush_buf(buf, pf_tokens);
-        }
-
-        switch (it->type) {
-            case STR_T:
-                if (!it->lexeme.compare(".")) {
-                    flush_buf(buf, pf_tokens);
-                    pf_tokens.push_back(*it);
-                } else {
-                    buf += it->lexeme;
-                }
-                break;
-            case ENUM_T:
-            case ITER_OM_T:
-            case ITER_ZO_T:
-            case ITER_ZM_T:
-            case ITER_N_T:
-                while (!ops.empty() && prior[it->type] < prior[ops.top().type] && ops.top().type != C_BR_T) {
-                    pf_tokens.push_back(ops.top());
-                    ops.pop();
-                }
-                ops.push(*it);
-                break;
-            case CAT_T:
-                if (it - 2 >= raw_tokens.rbegin() && (it - 2)->type > CAT_T) {
-                    flush_buf(buf, pf_tokens);
-                    while (!ops.empty() && prior[CAT_T] < prior[ops.top().type] && ops.top().type != C_BR_T) {
-                        pf_tokens.push_back(ops.top());
-                        ops.pop();
-                    }
-                    ops.push(*it);
-                }
-                break;
-            case O_BR_T:
-                while (ops.top().type != C_BR_T) {
-                    pf_tokens.push_back(ops.top());
-                    ops.pop();
-                }
-                ops.pop();
-                break;
-            case C_BR_T:
-                ops.push(*it);
-                break;
-        }
-    }
-    flush_buf(buf, pf_tokens);
-    while (!ops.empty()) {
-        if (ops.top().type == C_BR_T) {
-            throw invalid_argument("Brackets amount mismatch!");
-        }
-
-        pf_tokens.push_back(ops.top());
-        ops.pop();
+    if (it >= raw_tokens.end()) {
+        throw invalid_argument("Not enough arguments for binary operation!");
     }
 
-    reverse(pf_tokens.begin(), pf_tokens.end());
+    int cur_pos = pf_tokens.size();
+
+    if (it->type != STR_T && it->type != CAT_T) {
+        flush_buf();
+    }
+
+    switch (it->type) {
+        case O_BR_T:
+            brackets_count++;
+
+            it++;
+            E();
+            if (it->type != C_BR_T) {
+                throw invalid_argument("Brackets amount mismatch!");
+            }
+            brackets_count--;
+            flush_buf();
+
+            it++;
+            O(cur_pos);
+            break;
+        case C_BR_T:
+            if (brackets_count > 0) {
+                return;
+            } else {
+                throw invalid_argument("Wrong ')'!");
+            }
+        case STR_T: {
+            token tmp = *it;
+            it++;
+            if (O()) {
+                pf_tokens.push_back(tmp);
+            } else {
+                buf += tmp.lexeme;
+            }
+            break;
+        }
+        case CAT_T:
+            break;
+        default:
+            throw invalid_argument("Wrong operation syntax!");
+    }
+
+    if (it >= raw_tokens.end()) {
+        return;
+    }
+
+    if (it->type == STR_T || it->type == O_BR_T) {
+        pf_tokens.insert(pf_tokens.begin() + cur_pos, token {CAT_T, ""});
+        E(true);
+    }
+
+    if (it->type == CAT_T) {
+        if (it + 2 >= raw_tokens.end() || (it + 2)->type <= CAT_T) {
+            it++;
+            E();
+        } else {
+            pf_tokens.insert(pf_tokens.begin() + cur_pos, *it);
+            flush_buf();
+
+            it++;
+            E(true);
+        }
+    }
+    if (it->type == ENUM_T && !last) {
+        pf_tokens.insert(pf_tokens.begin() + cur_pos, *it);
+        flush_buf();
+
+        it++;
+        E();
+    }
+}
+
+bool SyntaxAnalyzer::O(int pos)
+{
+    if (it < raw_tokens.end() && it->type > CAT_T) {
+        if (pos >= 0) {
+            pf_tokens.insert(pf_tokens.begin() + pos, *it);
+        }
+        token tmp = *it;
+        it++;
+        O(pos);
+        if (pos == -1) {
+            pf_tokens.push_back(tmp);
+        }
+
+        return true;
+    }
+    return false;
+}
+
+vector<token> SyntaxAnalyzer::analyze()
+{
+    init();
+
+    if (raw_tokens.size() == 0) {
+        return raw_tokens;
+    }
+
+    E();
+    flush_buf();
 
     return pf_tokens;
 }

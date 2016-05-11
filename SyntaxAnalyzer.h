@@ -19,11 +19,24 @@ using namespace std;
 class SyntaxAnalyzer
 {
 private:
+    vector<token> raw_tokens;
+    vector<token> pf_tokens;
+    vector<token>::iterator it;
+
+    int brackets_count;
+    string buf;
+
+    void init();
+
+    void E(bool last = false);
+    bool O(int pos = -1);
+
+    void flush_buf();
 public:
-    SyntaxAnalyzer() {}
+    SyntaxAnalyzer(const vector<token> &tokens);
     ~SyntaxAnalyzer() {}
 
-    static vector<token> analyze(vector<token> raw_tokens);
+    vector<token> analyze();
 };
 
 
