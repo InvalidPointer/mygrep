@@ -65,7 +65,12 @@ void SyntaxAnalyzer::E(bool last)
             if (O()) {
                 pf_tokens.push_back(tmp);
             } else {
-                buf += tmp.lexeme;
+                if (tmp.lexeme.compare(".")) {
+                    flush_buf();
+                    pf_tokens.push_back(tmp);
+                } else {
+                    buf += tmp.lexeme;
+                }
             }
             break;
         }

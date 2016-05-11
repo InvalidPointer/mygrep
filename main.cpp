@@ -15,7 +15,7 @@ int main()
         cout << "Lexeme: " << it->lexeme << " Token: " << it->type << endl;
     }
 
-    Regexp r("la*");
+    Regexp r("l.");
     cout << "'" << r.search("hjklaaaaaddabedfbdfdbsbba") << "'" << endl;
 
     return 0;
