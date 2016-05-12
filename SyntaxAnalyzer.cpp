@@ -18,16 +18,25 @@ void SyntaxAnalyzer::init()
     buf = "";
 }
 
-void SyntaxAnalyzer::flush_buf()
+bool SyntaxAnalyzer::flush_buf(int pos)
 {
     if (!buf.empty()) {
-        pf_tokens.push_back(token {STR_T, buf});
+        if (pos == -1) {
+            pf_tokens.push_back(token {STR_T, buf});
+        } else {
+            pf_tokens.insert(pf_tokens.begin() + pos, token {STR_T, buf});
+        }
         buf = "";
+
+        return true;
     }
+    return false;
 }
 
 void SyntaxAnalyzer::E(bool last)
 {
+    bool need_cat = false;
+
     if (it >= raw_tokens.end()) {
         throw invalid_argument("Not enough arguments for binary operation!");
     }
@@ -49,6 +58,7 @@ void SyntaxAnalyzer::E(bool last)
             }
             brackets_count--;
             flush_buf();
+            need_cat = true;
 
             it++;
             O(cur_pos);
@@ -62,10 +72,13 @@ void SyntaxAnalyzer::E(bool last)
         case STR_T: {
             token tmp = *it;
             it++;
-            if (O()) {
+            if ((need_cat = O())) {
+                if (flush_buf(cur_pos)) {
+                    pf_tokens.insert(pf_tokens.begin() + cur_pos, token {CAT_T, ""});
+                }
                 pf_tokens.push_back(tmp);
             } else {
-                if (tmp.lexeme.compare(".")) {
+                if (!tmp.lexeme.compare(".")) {
                     flush_buf();
                     pf_tokens.push_back(tmp);
                 } else {
@@ -74,8 +87,6 @@ void SyntaxAnalyzer::E(bool last)
             }
             break;
         }
-        case CAT_T:
-            break;
         default:
             throw invalid_argument("Wrong operation syntax!");
     }
@@ -85,22 +96,13 @@ void SyntaxAnalyzer::E(bool last)
     }
 
     if (it->type == STR_T || it->type == O_BR_T) {
-        pf_tokens.insert(pf_tokens.begin() + cur_pos, token {CAT_T, ""});
+        if (it->type == O_BR_T || need_cat) {
+            flush_buf();
+            pf_tokens.insert(pf_tokens.begin() + cur_pos, token {CAT_T, ""});
+        }
         E(true);
     }
 
-    if (it->type == CAT_T) {
-        if (it + 2 >= raw_tokens.end() || (it + 2)->type <= CAT_T) {
-            it++;
-            E();
-        } else {
-            pf_tokens.insert(pf_tokens.begin() + cur_pos, *it);
-            flush_buf();
-
-            it++;
-            E(true);
-        }
-    }
     if (it->type == ENUM_T && !last) {
         pf_tokens.insert(pf_tokens.begin() + cur_pos, *it);
         flush_buf();
@@ -112,7 +114,7 @@ void SyntaxAnalyzer::E(bool last)
 
 bool SyntaxAnalyzer::O(int pos)
 {
-    if (it < raw_tokens.end() && it->type > CAT_T) {
+    if (it < raw_tokens.end() && prior[it->type] > prior[STR_T]) {
         if (pos >= 0) {
             pf_tokens.insert(pf_tokens.begin() + pos, *it);
         }

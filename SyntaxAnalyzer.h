@@ -31,7 +31,7 @@ private:
     void E(bool last = false);
     bool O(int pos = -1);
 
-    void flush_buf();
+    bool flush_buf(int pos = -1);
 public:
     SyntaxAnalyzer(const vector<token> &tokens);
     ~SyntaxAnalyzer() {}
