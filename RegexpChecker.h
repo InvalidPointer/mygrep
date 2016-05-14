@@ -9,6 +9,9 @@
 #include <vector>
 #include <string>
 #include <stdexcept>
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/wait.h>
 
 #include "token.h"
 #include "rc_result.h"
@@ -18,6 +21,8 @@ using namespace std;
 class RegexpChecker
 {
 private:
+    pid_t pid;
+
     const vector<token> *sv;
     vector<token>::const_iterator svit;
     const string *target;
@@ -25,8 +30,6 @@ private:
     string::const_iterator tit;
 
     bool search;
-
-    int skip_params = 0;
 
     bool check_op();
     bool op_str();

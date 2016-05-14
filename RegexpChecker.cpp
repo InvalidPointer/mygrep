@@ -12,14 +12,23 @@ RegexpChecker::RegexpChecker(const vector<token> *v, const string *s, vector<tok
     tit(sit),
     search(search)
 {
+    pid = getpid();
 }
 
 rc_result RegexpChecker::check()
 {
     for ( ; svit < sv->end() && tit < target->end(); ) {
         if (!check_op()) {
+            if (!pid) {
+                exit(0);
+            }
+
             return rc_result {false, ""};
         }
+    }
+
+    if (!pid) {
+        exit(svit == sv->end() && (tit == target->end() || search));
     }
 
     return rc_result {(svit == sv->end() && (tit == target->end() || search)),
@@ -70,26 +79,22 @@ bool RegexpChecker::op_str()
 
 bool RegexpChecker::op_enum()
 {
-    skip_params++;
     if (check_op()) {
         skip_op();
-        skip_params--;
         return true;
     }
 
-    return skip_params--, check_op();
+    return check_op();
 }
 
 bool RegexpChecker::op_cat()
 {
-    skip_params++;
     if (!check_op()) {
         skip_op();
-        skip_params--;
         return false;
     }
 
-    return skip_params--, check_op();
+    return check_op();
 }
 
 bool RegexpChecker::op_iter(int min, int max)
@@ -104,11 +109,13 @@ bool RegexpChecker::op_iter(int min, int max)
     string::const_iterator base_tit = tit, prev_tit = tit;
     skip_op();
     do {
-        for (int i = 0; i < skip_params; i++) {
-            skip_op();
+        if (!(pid = fork())) {
+            return true;
         }
-        RegexpChecker rc(sv, target, svit, tit, search);
-        if (rc.check().status && iter_count >= min) {
+        int status;
+        wait(&status);
+
+        if (WEXITSTATUS(status) && iter_count >= min) {
             found = true;
         } else if (found) {
             tit = prev_tit;
