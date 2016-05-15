@@ -5,6 +5,7 @@
 #include "RegexpChecker.h"
 
 RegexpChecker::RegexpChecker(const vector<token> *v, const string *s, vector<token>::const_iterator vit, string::const_iterator sit, bool search):
+    child(false),
     sv(v),
     svit(vit),
     target(s),
@@ -12,14 +13,13 @@ RegexpChecker::RegexpChecker(const vector<token> *v, const string *s, vector<tok
     tit(sit),
     search(search)
 {
-    pid = getpid();
 }
 
 rc_result RegexpChecker::check()
 {
     for ( ; svit < sv->end() && tit < target->end(); ) {
         if (!check_op()) {
-            if (!pid) {
+            if (child) {
                 exit(0);
             }
 
@@ -27,7 +27,7 @@ rc_result RegexpChecker::check()
         }
     }
 
-    if (!pid) {
+    if (child) {
         exit(svit == sv->end() && (tit == target->end() || search));
     }
 
@@ -109,7 +109,8 @@ bool RegexpChecker::op_iter(int min, int max)
     string::const_iterator base_tit = tit, prev_tit = tit;
     skip_op();
     do {
-        if (!(pid = fork())) {
+        if (!fork()) {
+            child = true;
             return true;
         }
         int status;

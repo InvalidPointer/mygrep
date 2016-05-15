@@ -21,7 +21,7 @@ using namespace std;
 class RegexpChecker
 {
 private:
-    pid_t pid;
+    bool child;
 
     const vector<token> *sv;
     vector<token>::const_iterator svit;
