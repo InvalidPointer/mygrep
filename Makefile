@@ -1,9 +1,19 @@
 CC = g++
 CFLAGS = -g -O2 -std=c++11
 BIN = ./bin/
-.PHONY: all clean
+.PHONY: all clean mygrep tester
 
-all: $(BIN)/mygrep
+all: $(BIN)/mygrep $(BIN)/tester
+
+mygrep: $(BIN)/mygrep
+
+tester: $(BIN)/tester
+
+$(BIN)/tester: $(BIN)/tester.o $(BIN)/Regexp.o $(BIN)/RegexpChecker.o $(BIN)/SyntaxAnalyzer.o $(BIN)/LexicalAnalyzer.o
+		$(CC) -o $(BIN)/tester $(BIN)/tester.o $(BIN)/Regexp.o $(BIN)/RegexpChecker.o $(BIN)/SyntaxAnalyzer.o $(BIN)/LexicalAnalyzer.o
+
+$(BIN)/tester.o: tester.cpp Regexp.h | $(BIN)
+		$(CC) $(CFLAGS) -c -o $(BIN)/tester.o tester.cpp
 
 $(BIN)/mygrep: $(BIN)/mygrep.o $(BIN)/Regexp.o $(BIN)/RegexpChecker.o $(BIN)/SyntaxAnalyzer.o $(BIN)/LexicalAnalyzer.o
 		$(CC) -o $(BIN)/mygrep $(BIN)/mygrep.o $(BIN)/Regexp.o $(BIN)/RegexpChecker.o $(BIN)/SyntaxAnalyzer.o $(BIN)/LexicalAnalyzer.o
