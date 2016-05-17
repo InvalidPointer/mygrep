@@ -68,6 +68,7 @@ bool RegexpChecker::check_op()
 bool RegexpChecker::op_str()
 {
     bool res = !svit->lexeme.compare(".") || !target->compare(tit - target->begin(), svit->lexeme.size(), svit->lexeme);
+
     if (res) {
         tit += svit->lexeme.size();
     }
@@ -107,6 +108,7 @@ bool RegexpChecker::op_iter(int min, int max)
     bool found = false;
     vector<token>::const_iterator base_it = svit;
     string::const_iterator base_tit = tit, prev_tit = tit;
+
     skip_op();
     do {
         if (!fork()) {
@@ -118,13 +120,30 @@ bool RegexpChecker::op_iter(int min, int max)
 
         if (WEXITSTATUS(status) && iter_count >= min) {
             found = true;
+
+            if (tit >= target->end()) {
+                return true;
+            }
         } else if (found) {
             tit = prev_tit;
             return true;
         }
         svit = base_it;
+        iter_count++;
+
+        if (!check_op()) {
+            break;
+        }
+
+        if (child) {
+            return true;
+        }
+
+        if (prev_tit == tit) {
+            break;
+        }
         prev_tit = tit;
-    } while (iter_count++, check_op() && (max == -1 || iter_count <= max));
+    } while (max == -1 || iter_count <= max);
 
     if (found) {
         tit = prev_tit;
