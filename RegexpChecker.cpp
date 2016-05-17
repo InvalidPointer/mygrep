@@ -131,14 +131,8 @@ bool RegexpChecker::op_iter(int min, int max)
         svit = base_it;
         iter_count++;
 
-        bool is_child = child;
-
         if (!check_op()) {
             break;
-        }
-
-        if (!is_child && child) {
-            return true;
         }
 
         if (prev_tit == tit) {
