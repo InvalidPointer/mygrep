@@ -10,9 +10,9 @@ Regexp::Regexp(const string &pattern)
     SyntaxAnalyzer sa(LexicalAnalyzer::analyze(pattern));
     sv = sa.analyze();
 
-    for (auto it = sv.begin(); it < sv.end(); it++) {
+    /*for (auto it = sv.begin(); it < sv.end(); it++) {
         cout << "Lexeme: " << it->lexeme << endl;
-    }
+    }*/
 }
 
 bool Regexp::match(const string &target) const
