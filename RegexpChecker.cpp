@@ -1,18 +1,14 @@
-//
-// Created by InvalidPointer on 5/8/2016.
-//
-
 #include "RegexpChecker.h"
 
-RegexpChecker::RegexpChecker(const vector<token> *v, const string *s, vector<token>::const_iterator vit, string::const_iterator sit, bool search):
+RegexpChecker::RegexpChecker(const vector<token> *v, const string *s, string::const_iterator sit, bool search):
     child(false),
     sv(v),
-    svit(vit),
     target(s),
     btit(sit),
     tit(sit),
     search(search)
 {
+    svit = v->begin();
 }
 
 rc_result RegexpChecker::check()
