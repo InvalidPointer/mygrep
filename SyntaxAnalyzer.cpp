@@ -91,6 +91,10 @@ void SyntaxAnalyzer::E(bool last)
         return;
     }
 
+    if (it->type == C_BR_T) {
+        throw invalid_argument("Wrong ')'!");
+    }
+
     if (it->type == STR_T || it->type == O_BR_T) {
         if (it->type == O_BR_T || need_cat) {
             flush_buf();
