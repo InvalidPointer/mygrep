@@ -1,0 +1,13 @@
+a
+ab
+abb
+cd
+cdcd
+cdd
+abbbab
+ff*
+efff*
+eeeff*
+eeeefff*
+ef*
+abbbabacdcdeeff*
