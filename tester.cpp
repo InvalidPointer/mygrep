@@ -93,6 +93,10 @@ vector<string> get_files_in_dir(const string &dir_name) {
     class stat st;
 
     dir = opendir(dir_name.c_str());
+    if (!dir) {
+        return out;
+    }
+
     while ((ent = readdir(dir)) != NULL) {
         const string file_name = ent->d_name;
         const string full_file_name = dir_name + "/" + file_name;
