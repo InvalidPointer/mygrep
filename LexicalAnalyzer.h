@@ -4,6 +4,15 @@
  * \author InvalidPointer
  *
  * Данный файл содержит в себе определение класса лексического анализатора
+ *
+ * Грамматика регулярного выражения:
+ * L -> SL | OL | _
+ * S -> [a-zA-Z] | N | \E
+ * O -> . | ? | + | {M,M} | * | \| | ( | )
+ * E -> . | ? | + | { | } | * | \| | ( | ) | [ | ] | - | \
+ * N -> D | DN
+ * D -> 0 | 1 | ... | 9
+ * M -> N | _
 */
 #ifndef MYGREP_LEXICALANALYZER_H
 #define MYGREP_LEXICALANALYZER_H
