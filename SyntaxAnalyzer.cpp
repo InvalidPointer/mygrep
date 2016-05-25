@@ -91,7 +91,7 @@ void SyntaxAnalyzer::E(bool last)
         return;
     }
 
-    if (it->type == C_BR_T) {
+    if (it->type == C_BR_T && brackets_count <= 0) {
         throw invalid_argument("Wrong ')'!");
     }
 
