@@ -49,7 +49,7 @@ void SyntaxAnalyzer::E(bool last)
 
             it++;
             E();
-            if (it->type != C_BR_T) {
+            if (it >= raw_tokens.end() || it->type != C_BR_T) {
                 throw invalid_argument("Brackets amount mismatch!");
             }
             brackets_count--;
