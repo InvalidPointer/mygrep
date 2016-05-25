@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['c_5fbr_5ft',['C_BR_T',['../token_8h.html#afe5ef662303b6b710ea6ee1a944bad0da2f8419e4924ed901fea345a477f57099',1,'token.h']]],
-  ['cat_5ft',['CAT_T',['../token_8h.html#afe5ef662303b6b710ea6ee1a944bad0daa65d2890d1cf384b5570002835722c12',1,'token.h']]],
-  ['check',['check',['../class_regexp_checker.html#a58d9c7c69c53ef18fa6ddb6a2c4bf24f',1,'RegexpChecker']]]
+  ['brackets_5fcount',['brackets_count',['../class_syntax_analyzer.html#a9ad8571c7819ba91db174772d3fbfbd9',1,'SyntaxAnalyzer']]],
+  ['btit',['btit',['../class_regexp_checker.html#a54f557b93e0f498422185294726d129c',1,'RegexpChecker']]],
+  ['buf',['buf',['../class_syntax_analyzer.html#a5b6fe22c4940c5560de49bebe38768e8',1,'SyntaxAnalyzer']]]
 ];

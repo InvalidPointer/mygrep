@@ -105,7 +105,9 @@ $(document).ready(function(){initNavTree('class_lexical_analyzer.html','');});
 
 <div class="header">
   <div class="summary">
+<a href="#pub-methods">Открытые члены</a> &#124;
 <a href="#pub-static-methods">Открытые статические члены</a> &#124;
+<a href="#pri-static-methods">Закрытые статические члены</a> &#124;
 <a href="class_lexical_analyzer-members.html">Полный список членов класса</a>  </div>
   <div class="headertitle">
 <div class="title">Класс LexicalAnalyzer</div>  </div>
@@ -117,15 +119,76 @@ $(document).ready(function(){initNavTree('class_lexical_analyzer.html','');});
 
 <p><code>#include &lt;<a class="el" href="_lexical_analyzer_8h_source.html">LexicalAnalyzer.h</a>&gt;</code></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Открытые члены</h2></td></tr>
+<tr class="memitem:a1934aa8efdd1b1b7d31ecc245838d995"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lexical_analyzer.html#a1934aa8efdd1b1b7d31ecc245838d995">LexicalAnalyzer</a> ()</td></tr>
+<tr class="separator:a1934aa8efdd1b1b7d31ecc245838d995"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac14482de40e9c91619739c8dcd6e8292"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lexical_analyzer.html#ac14482de40e9c91619739c8dcd6e8292">~LexicalAnalyzer</a> ()</td></tr>
+<tr class="separator:ac14482de40e9c91619739c8dcd6e8292"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Открытые статические члены</h2></td></tr>
 <tr class="memitem:afd35f07227fd40638e9d145ee6413640"><td class="memItemLeft" align="right" valign="top">static vector&lt; <a class="el" href="structtoken.html">token</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lexical_analyzer.html#afd35f07227fd40638e9d145ee6413640">analyze</a> (const string &amp;s)</td></tr>
 <tr class="separator:afd35f07227fd40638e9d145ee6413640"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-methods"></a>
+Закрытые статические члены</h2></td></tr>
+<tr class="memitem:a24d338442e8205f00690565bd2157ebc"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lexical_analyzer.html#a24d338442e8205f00690565bd2157ebc">isspecial</a> (char ch)</td></tr>
+<tr class="separator:a24d338442e8205f00690565bd2157ebc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e124ea0dcdfccc94f17ecc99aac6206"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lexical_analyzer.html#a9e124ea0dcdfccc94f17ecc99aac6206">is_num</a> (const string &amp;s)</td></tr>
+<tr class="separator:a9e124ea0dcdfccc94f17ecc99aac6206"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Подробное описание</h2>
 <div class="textblock"><p>Лексический анализатор </p>
 <p>Лексический анализатор преобразует исходное регулярное выражение в последовательность лексем, проверяя экранирование специальных символов. </p>
-</div><h2 class="groupheader">Методы</h2>
+</div><h2 class="groupheader">Конструктор(ы)</h2>
+<a class="anchor" id="a1934aa8efdd1b1b7d31ecc245838d995"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">LexicalAnalyzer::LexicalAnalyzer </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ac14482de40e9c91619739c8dcd6e8292"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">LexicalAnalyzer::~LexicalAnalyzer </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Методы</h2>
 <a class="anchor" id="afd35f07227fd40638e9d145ee6413640"></a>
 <div class="memitem">
 <div class="memproto">
@@ -161,11 +224,108 @@ $(document).ready(function(){initNavTree('class_lexical_analyzer.html','');});
   </dd>
 </dl>
 
+<p><div class="dynheader">
+Граф вызовов:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="class_lexical_analyzer_afd35f07227fd40638e9d145ee6413640_cgraph.svg" width="399" height="88"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</p>
+
+<p><div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="class_lexical_analyzer_afd35f07227fd40638e9d145ee6413640_icgraph.svg" width="344" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a9e124ea0dcdfccc94f17ecc99aac6206"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">string LexicalAnalyzer::is_num </td>
+          <td>(</td>
+          <td class="paramtype">const string &amp;&#160;</td>
+          <td class="paramname"><em>s</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Проверяет, является ли строка числом </p><dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">s</td><td>Проверяемая строка</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Та же строка</dd></dl>
+<dl class="exception"><dt>Исключения</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::invalid_argument</td><td>В случае, если строка не является числом </td></tr>
+    <tr><td class="paramname">std::out_of_range</td><td>В случае, если записанное в строке число не может поместиться в тип int </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="class_lexical_analyzer_a9e124ea0dcdfccc94f17ecc99aac6206_icgraph.svg" width="556" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a24d338442e8205f00690565bd2157ebc"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool LexicalAnalyzer::isspecial </td>
+          <td>(</td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>ch</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Проверяет, является ли символ специальным </p><dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">ch</td><td>Проверяемый символ</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Результат проверки </dd></dl>
+
+<p><div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="class_lexical_analyzer_a24d338442e8205f00690565bd2157ebc_icgraph.svg" width="566" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</p>
+
 </div>
 </div>
 <hr/>Объявления и описания членов классов находятся в файлах:<ul>
 <li><a class="el" href="_lexical_analyzer_8h_source.html">LexicalAnalyzer.h</a></li>
-<li>LexicalAnalyzer.cpp</li>
+<li><a class="el" href="_lexical_analyzer_8cpp.html">LexicalAnalyzer.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

@@ -1,0 +1,93 @@
+\hypertarget{token_8h}{}\section{Файл token.\+h}
+\label{token_8h}\index{token.\+h@{token.\+h}}
+
+
+Файл с определением структуры лексемы  
+
+
+Граф файлов, в которые включается этот файл\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{token_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Классы}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structtoken}{token}
+\begin{DoxyCompactList}\small\item\em Структура лексемы \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Перечисления}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{token_8h_afe5ef662303b6b710ea6ee1a944bad0d}{token\+\_\+type} \{ \\*
+\hyperlink{token_8h_afe5ef662303b6b710ea6ee1a944bad0da3fef8bbb5f93d143a64514ef24fcf6d4}{O\+\_\+\+B\+R\+\_\+T}, 
+\hyperlink{token_8h_afe5ef662303b6b710ea6ee1a944bad0da2f8419e4924ed901fea345a477f57099}{C\+\_\+\+B\+R\+\_\+T}, 
+\hyperlink{token_8h_afe5ef662303b6b710ea6ee1a944bad0da19986f9d7a7a4490063a73769c71dea2}{E\+N\+U\+M\+\_\+T}, 
+\hyperlink{token_8h_afe5ef662303b6b710ea6ee1a944bad0da361569a0a02c73a6b3c61d8120c55822}{S\+T\+R\+\_\+T}, 
+\\*
+\hyperlink{token_8h_afe5ef662303b6b710ea6ee1a944bad0daa65d2890d1cf384b5570002835722c12}{C\+A\+T\+\_\+T}, 
+\hyperlink{token_8h_afe5ef662303b6b710ea6ee1a944bad0dad117e84ed28d908e6853db06779e913e}{I\+T\+E\+R\+\_\+\+Z\+O\+\_\+T}, 
+\hyperlink{token_8h_afe5ef662303b6b710ea6ee1a944bad0dac7613bf6d065d7465e4325704f9adcb7}{I\+T\+E\+R\+\_\+\+O\+M\+\_\+T}, 
+\hyperlink{token_8h_afe5ef662303b6b710ea6ee1a944bad0da8de1f797d0d39e201c2aa538affc9f88}{I\+T\+E\+R\+\_\+\+Z\+M\+\_\+T}, 
+\\*
+\hyperlink{token_8h_afe5ef662303b6b710ea6ee1a944bad0dabcd8de3a261c1dde58c0de1ce00d3cab}{I\+T\+E\+R\+\_\+\+N\+\_\+T}
+ \}\begin{DoxyCompactList}\small\item\em Тип лексемы \end{DoxyCompactList}
+\end{DoxyCompactItemize}
+\subsection*{Переменные}
+\begin{DoxyCompactItemize}
+\item 
+const int \hyperlink{token_8h_a720268725b243dc6376e8247009df4af}{prior} \mbox{[}$\,$\mbox{]} = \{0, 0, 1, 2, 2, 3, 3, 3, 3\}
+\begin{DoxyCompactList}\small\item\em Приоритеты операций, в порядке описанном выше \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Подробное описание}
+Файл с определением структуры лексемы 
+
+\begin{DoxyAuthor}{Автор}
+Invalid\+Pointer
+\end{DoxyAuthor}
+Данный файл содержит в себе определение структуры лексемы, их типы и приоритеты 
+
+\subsection{Перечисления}
+\index{token.\+h@{token.\+h}!token\+\_\+type@{token\+\_\+type}}
+\index{token\+\_\+type@{token\+\_\+type}!token.\+h@{token.\+h}}
+\subsubsection[{\texorpdfstring{token\+\_\+type}{token_type}}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf token\+\_\+type}}\hypertarget{token_8h_afe5ef662303b6b710ea6ee1a944bad0d}{}\label{token_8h_afe5ef662303b6b710ea6ee1a944bad0d}
+
+
+Тип лексемы 
+
+\begin{Desc}
+\item[Элементы перечислений]\par
+\begin{description}
+\index{O\+\_\+\+B\+R\+\_\+T@{O\+\_\+\+B\+R\+\_\+T}!token.\+h@{token.\+h}}\index{token.\+h@{token.\+h}!O\+\_\+\+B\+R\+\_\+T@{O\+\_\+\+B\+R\+\_\+T}}\item[{\em 
+O\+\_\+\+B\+R\+\_\+T\hypertarget{token_8h_afe5ef662303b6b710ea6ee1a944bad0da3fef8bbb5f93d143a64514ef24fcf6d4}{}\label{token_8h_afe5ef662303b6b710ea6ee1a944bad0da3fef8bbb5f93d143a64514ef24fcf6d4}
+}]Открывающая скобка \index{C\+\_\+\+B\+R\+\_\+T@{C\+\_\+\+B\+R\+\_\+T}!token.\+h@{token.\+h}}\index{token.\+h@{token.\+h}!C\+\_\+\+B\+R\+\_\+T@{C\+\_\+\+B\+R\+\_\+T}}\item[{\em 
+C\+\_\+\+B\+R\+\_\+T\hypertarget{token_8h_afe5ef662303b6b710ea6ee1a944bad0da2f8419e4924ed901fea345a477f57099}{}\label{token_8h_afe5ef662303b6b710ea6ee1a944bad0da2f8419e4924ed901fea345a477f57099}
+}]Закрывающая скобка \index{E\+N\+U\+M\+\_\+T@{E\+N\+U\+M\+\_\+T}!token.\+h@{token.\+h}}\index{token.\+h@{token.\+h}!E\+N\+U\+M\+\_\+T@{E\+N\+U\+M\+\_\+T}}\item[{\em 
+E\+N\+U\+M\+\_\+T\hypertarget{token_8h_afe5ef662303b6b710ea6ee1a944bad0da19986f9d7a7a4490063a73769c71dea2}{}\label{token_8h_afe5ef662303b6b710ea6ee1a944bad0da19986f9d7a7a4490063a73769c71dea2}
+}]Операция перечисления \index{S\+T\+R\+\_\+T@{S\+T\+R\+\_\+T}!token.\+h@{token.\+h}}\index{token.\+h@{token.\+h}!S\+T\+R\+\_\+T@{S\+T\+R\+\_\+T}}\item[{\em 
+S\+T\+R\+\_\+T\hypertarget{token_8h_afe5ef662303b6b710ea6ee1a944bad0da361569a0a02c73a6b3c61d8120c55822}{}\label{token_8h_afe5ef662303b6b710ea6ee1a944bad0da361569a0a02c73a6b3c61d8120c55822}
+}]Литерал или последовательность литералов \index{C\+A\+T\+\_\+T@{C\+A\+T\+\_\+T}!token.\+h@{token.\+h}}\index{token.\+h@{token.\+h}!C\+A\+T\+\_\+T@{C\+A\+T\+\_\+T}}\item[{\em 
+C\+A\+T\+\_\+T\hypertarget{token_8h_afe5ef662303b6b710ea6ee1a944bad0daa65d2890d1cf384b5570002835722c12}{}\label{token_8h_afe5ef662303b6b710ea6ee1a944bad0daa65d2890d1cf384b5570002835722c12}
+}]Операция конкатенации \index{I\+T\+E\+R\+\_\+\+Z\+O\+\_\+T@{I\+T\+E\+R\+\_\+\+Z\+O\+\_\+T}!token.\+h@{token.\+h}}\index{token.\+h@{token.\+h}!I\+T\+E\+R\+\_\+\+Z\+O\+\_\+T@{I\+T\+E\+R\+\_\+\+Z\+O\+\_\+T}}\item[{\em 
+I\+T\+E\+R\+\_\+\+Z\+O\+\_\+T\hypertarget{token_8h_afe5ef662303b6b710ea6ee1a944bad0dad117e84ed28d908e6853db06779e913e}{}\label{token_8h_afe5ef662303b6b710ea6ee1a944bad0dad117e84ed28d908e6853db06779e913e}
+}]Операция итерирования 0 или 1 раз \index{I\+T\+E\+R\+\_\+\+O\+M\+\_\+T@{I\+T\+E\+R\+\_\+\+O\+M\+\_\+T}!token.\+h@{token.\+h}}\index{token.\+h@{token.\+h}!I\+T\+E\+R\+\_\+\+O\+M\+\_\+T@{I\+T\+E\+R\+\_\+\+O\+M\+\_\+T}}\item[{\em 
+I\+T\+E\+R\+\_\+\+O\+M\+\_\+T\hypertarget{token_8h_afe5ef662303b6b710ea6ee1a944bad0dac7613bf6d065d7465e4325704f9adcb7}{}\label{token_8h_afe5ef662303b6b710ea6ee1a944bad0dac7613bf6d065d7465e4325704f9adcb7}
+}]Операция итерирования 1 или более раз \index{I\+T\+E\+R\+\_\+\+Z\+M\+\_\+T@{I\+T\+E\+R\+\_\+\+Z\+M\+\_\+T}!token.\+h@{token.\+h}}\index{token.\+h@{token.\+h}!I\+T\+E\+R\+\_\+\+Z\+M\+\_\+T@{I\+T\+E\+R\+\_\+\+Z\+M\+\_\+T}}\item[{\em 
+I\+T\+E\+R\+\_\+\+Z\+M\+\_\+T\hypertarget{token_8h_afe5ef662303b6b710ea6ee1a944bad0da8de1f797d0d39e201c2aa538affc9f88}{}\label{token_8h_afe5ef662303b6b710ea6ee1a944bad0da8de1f797d0d39e201c2aa538affc9f88}
+}]Операция итерирования 0 или более раз \index{I\+T\+E\+R\+\_\+\+N\+\_\+T@{I\+T\+E\+R\+\_\+\+N\+\_\+T}!token.\+h@{token.\+h}}\index{token.\+h@{token.\+h}!I\+T\+E\+R\+\_\+\+N\+\_\+T@{I\+T\+E\+R\+\_\+\+N\+\_\+T}}\item[{\em 
+I\+T\+E\+R\+\_\+\+N\+\_\+T\hypertarget{token_8h_afe5ef662303b6b710ea6ee1a944bad0dabcd8de3a261c1dde58c0de1ce00d3cab}{}\label{token_8h_afe5ef662303b6b710ea6ee1a944bad0dabcd8de3a261c1dde58c0de1ce00d3cab}
+}]Операция итерирования \end{description}
+\end{Desc}
+
+
+\subsection{Переменные}
+\index{token.\+h@{token.\+h}!prior@{prior}}
+\index{prior@{prior}!token.\+h@{token.\+h}}
+\subsubsection[{\texorpdfstring{prior}{prior}}]{\setlength{\rightskip}{0pt plus 5cm}const int prior\mbox{[}$\,$\mbox{]} = \{0, 0, 1, 2, 2, 3, 3, 3, 3\}}\hypertarget{token_8h_a720268725b243dc6376e8247009df4af}{}\label{token_8h_a720268725b243dc6376e8247009df4af}
+
+
+Приоритеты операций, в порядке описанном выше 
+

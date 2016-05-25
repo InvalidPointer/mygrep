@@ -1,0 +1,382 @@
+\hypertarget{class_regexp_checker}{}\section{Класс Regexp\+Checker}
+\label{class_regexp_checker}\index{Regexp\+Checker@{Regexp\+Checker}}
+
+
+Класс, проверяющий строку на соответствие регулярному выражению  
+
+
+
+
+{\ttfamily \#include $<$Regexp\+Checker.\+h$>$}
+
+\subsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_regexp_checker_a44a66429366e8d24ec92d07ea2f0e86f}{Regexp\+Checker} (const vector$<$ \hyperlink{structtoken}{token} $>$ $\ast$v, const string $\ast$s, string\+::const\+\_\+iterator sit, bool \hyperlink{class_regexp_checker_a76fa7992eddb6adcd63d9df0e5db1a92}{search}=false)
+\item 
+\hyperlink{class_regexp_checker_aa2e7c0de7bb85d60f905535f0d2a65e5}{$\sim$\+Regexp\+Checker} ()
+\item 
+\hyperlink{structrc__result}{rc\+\_\+result} \hyperlink{class_regexp_checker_a58d9c7c69c53ef18fa6ddb6a2c4bf24f}{check} ()
+\end{DoxyCompactItemize}
+\subsection*{Закрытые члены}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{class_regexp_checker_a12a12dfe322def2c802afd2ebea0b75f}{check\+\_\+op} ()
+\item 
+bool \hyperlink{class_regexp_checker_ad48539a0443212d78e32ff0a23918478}{op\+\_\+str} ()
+\item 
+bool \hyperlink{class_regexp_checker_aa775725022ae645c6d8f12633aa3a3d4}{op\+\_\+enum} ()
+\item 
+bool \hyperlink{class_regexp_checker_a3f379e2420eacf52f91afce6e0ade9e4}{op\+\_\+cat} ()
+\item 
+bool \hyperlink{class_regexp_checker_a5a34d99e02dba23757f33ce8107a961d}{op\+\_\+iter} (int min=0, int max=-\/1)
+\item 
+void \hyperlink{class_regexp_checker_adf00606a82e27c614122d001f21f9f96}{skip\+\_\+op} ()
+\begin{DoxyCompactList}\small\item\em Пропускает текущую операцию \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Закрытые данные}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{class_regexp_checker_a5003c015965ce4177450557c01543812}{child}
+\begin{DoxyCompactList}\small\item\em Показывает, является ли даный процесс дочерним \end{DoxyCompactList}\item 
+const vector$<$ \hyperlink{structtoken}{token} $>$ $\ast$ \hyperlink{class_regexp_checker_a4542347ee72d793d080b046be483d397}{sv}
+\begin{DoxyCompactList}\small\item\em Указатель на вектор с преобразованными лексемами \end{DoxyCompactList}\item 
+vector$<$ \hyperlink{structtoken}{token} $>$\+::const\+\_\+iterator \hyperlink{class_regexp_checker_a9823ceadabc26fe4c9042a86dddb4e34}{svit}
+\begin{DoxyCompactList}\small\item\em Итератор, используемый для обхода вектора лексем \end{DoxyCompactList}\item 
+const string $\ast$ \hyperlink{class_regexp_checker_a9a5672b777e0718a778e9061c3f579e6}{target}
+\begin{DoxyCompactList}\small\item\em Указатель на строку, которую необходимо проверить \end{DoxyCompactList}\item 
+const string\+::const\+\_\+iterator \hyperlink{class_regexp_checker_a54f557b93e0f498422185294726d129c}{btit}
+\begin{DoxyCompactList}\small\item\em Итератор, указывающий на место в строке, с которого начинается проверка \end{DoxyCompactList}\item 
+string\+::const\+\_\+iterator \hyperlink{class_regexp_checker_a782456d19baedddca76f23c3efd8cc53}{tit}
+\begin{DoxyCompactList}\small\item\em Итератор, используемый для перемещения по строке \end{DoxyCompactList}\item 
+bool \hyperlink{class_regexp_checker_a76fa7992eddb6adcd63d9df0e5db1a92}{search}
+\begin{DoxyCompactList}\small\item\em Показывает, находится ли класс в режиме поиска подстроки \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Подробное описание}
+Класс, проверяющий строку на соответствие регулярному выражению 
+
+Класс последовательно выполняет операции регулярного выражения, с учётом их приоритетов, проверяя таким образом строку на соответствие 
+
+\subsection{Конструктор(ы)}
+\index{Regexp\+Checker@{Regexp\+Checker}!Regexp\+Checker@{Regexp\+Checker}}
+\index{Regexp\+Checker@{Regexp\+Checker}!Regexp\+Checker@{Regexp\+Checker}}
+\subsubsection[{\texorpdfstring{Regexp\+Checker(const vector$<$ token $>$ $\ast$v, const string $\ast$s, string\+::const\+\_\+iterator sit, bool search=false)}{RegexpChecker(const vector< token > *v, const string *s, string::const_iterator sit, bool search=false)}}]{\setlength{\rightskip}{0pt plus 5cm}Regexp\+Checker\+::\+Regexp\+Checker (
+\begin{DoxyParamCaption}
+\item[{const vector$<$ {\bf token} $>$ $\ast$}]{v, }
+\item[{const string $\ast$}]{s, }
+\item[{string\+::const\+\_\+iterator}]{sit, }
+\item[{bool}]{search = {\ttfamily false}}
+\end{DoxyParamCaption}
+)}\hypertarget{class_regexp_checker_a44a66429366e8d24ec92d07ea2f0e86f}{}\label{class_regexp_checker_a44a66429366e8d24ec92d07ea2f0e86f}
+Конструктор класса 
+\begin{DoxyParams}[1]{Аргументы}
+\mbox{\tt in}  & {\em v} & Указатель на вектор лексем регулярного выражения в префиксной форме \\
+\hline
+\mbox{\tt in}  & {\em s} & Указатель на строку, которую необходимо проверить \\
+\hline
+\mbox{\tt in}  & {\em sit} & Итератор, который используется для задания начальной позиции для обработки строки \\
+\hline
+\mbox{\tt in}  & {\em search} & Определяет режим проверки\+: сопоставление или поиск \\
+\hline
+\end{DoxyParams}
+\index{Regexp\+Checker@{Regexp\+Checker}!````~Regexp\+Checker@{$\sim$\+Regexp\+Checker}}
+\index{````~Regexp\+Checker@{$\sim$\+Regexp\+Checker}!Regexp\+Checker@{Regexp\+Checker}}
+\subsubsection[{\texorpdfstring{$\sim$\+Regexp\+Checker()}{~RegexpChecker()}}]{\setlength{\rightskip}{0pt plus 5cm}Regexp\+Checker\+::$\sim$\+Regexp\+Checker (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_regexp_checker_aa2e7c0de7bb85d60f905535f0d2a65e5}{}\label{class_regexp_checker_aa2e7c0de7bb85d60f905535f0d2a65e5}
+
+
+\subsection{Методы}
+\index{Regexp\+Checker@{Regexp\+Checker}!check@{check}}
+\index{check@{check}!Regexp\+Checker@{Regexp\+Checker}}
+\subsubsection[{\texorpdfstring{check()}{check()}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf rc\+\_\+result} Regexp\+Checker\+::check (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_regexp_checker_a58d9c7c69c53ef18fa6ddb6a2c4bf24f}{}\label{class_regexp_checker_a58d9c7c69c53ef18fa6ddb6a2c4bf24f}
+Запускает проверку
+
+\begin{DoxyReturn}{Возвращает}
+Результат проверки 
+\end{DoxyReturn}
+
+
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_regexp_checker_a58d9c7c69c53ef18fa6ddb6a2c4bf24f_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Граф вызова функции\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_regexp_checker_a58d9c7c69c53ef18fa6ddb6a2c4bf24f_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{Regexp\+Checker@{Regexp\+Checker}!check\+\_\+op@{check\+\_\+op}}
+\index{check\+\_\+op@{check\+\_\+op}!Regexp\+Checker@{Regexp\+Checker}}
+\subsubsection[{\texorpdfstring{check\+\_\+op()}{check_op()}}]{\setlength{\rightskip}{0pt plus 5cm}bool Regexp\+Checker\+::check\+\_\+op (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{class_regexp_checker_a12a12dfe322def2c802afd2ebea0b75f}{}\label{class_regexp_checker_a12a12dfe322def2c802afd2ebea0b75f}
+Выполняет текующую операцию
+
+\begin{DoxyReturn}{Возвращает}
+Результат операции 
+\end{DoxyReturn}
+
+
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_regexp_checker_a12a12dfe322def2c802afd2ebea0b75f_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Граф вызова функции\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_regexp_checker_a12a12dfe322def2c802afd2ebea0b75f_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{Regexp\+Checker@{Regexp\+Checker}!op\+\_\+cat@{op\+\_\+cat}}
+\index{op\+\_\+cat@{op\+\_\+cat}!Regexp\+Checker@{Regexp\+Checker}}
+\subsubsection[{\texorpdfstring{op\+\_\+cat()}{op_cat()}}]{\setlength{\rightskip}{0pt plus 5cm}bool Regexp\+Checker\+::op\+\_\+cat (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{class_regexp_checker_a3f379e2420eacf52f91afce6e0ade9e4}{}\label{class_regexp_checker_a3f379e2420eacf52f91afce6e0ade9e4}
+Выполняет операцию конкатенации
+
+\begin{DoxyReturn}{Возвращает}
+Результат операции 
+\end{DoxyReturn}
+
+
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_regexp_checker_a3f379e2420eacf52f91afce6e0ade9e4_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Граф вызова функции\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_regexp_checker_a3f379e2420eacf52f91afce6e0ade9e4_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{Regexp\+Checker@{Regexp\+Checker}!op\+\_\+enum@{op\+\_\+enum}}
+\index{op\+\_\+enum@{op\+\_\+enum}!Regexp\+Checker@{Regexp\+Checker}}
+\subsubsection[{\texorpdfstring{op\+\_\+enum()}{op_enum()}}]{\setlength{\rightskip}{0pt plus 5cm}bool Regexp\+Checker\+::op\+\_\+enum (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{class_regexp_checker_aa775725022ae645c6d8f12633aa3a3d4}{}\label{class_regexp_checker_aa775725022ae645c6d8f12633aa3a3d4}
+Выполняет операцию перечисления
+
+\begin{DoxyReturn}{Возвращает}
+Результат операции 
+\end{DoxyReturn}
+
+
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_regexp_checker_aa775725022ae645c6d8f12633aa3a3d4_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Граф вызова функции\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_regexp_checker_aa775725022ae645c6d8f12633aa3a3d4_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{Regexp\+Checker@{Regexp\+Checker}!op\+\_\+iter@{op\+\_\+iter}}
+\index{op\+\_\+iter@{op\+\_\+iter}!Regexp\+Checker@{Regexp\+Checker}}
+\subsubsection[{\texorpdfstring{op\+\_\+iter(int min=0, int max=-\/1)}{op_iter(int min=0, int max=-1)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Regexp\+Checker\+::op\+\_\+iter (
+\begin{DoxyParamCaption}
+\item[{int}]{min = {\ttfamily 0}, }
+\item[{int}]{max = {\ttfamily -\/1}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{class_regexp_checker_a5a34d99e02dba23757f33ce8107a961d}{}\label{class_regexp_checker_a5a34d99e02dba23757f33ce8107a961d}
+Выполняет операцию итерирования 
+\begin{DoxyParams}[1]{Аргументы}
+\mbox{\tt in}  & {\em min} & Минимально необходимое количество итераций \\
+\hline
+\mbox{\tt in}  & {\em max} & Максимальное количество итераций\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Результат операции 
+\end{DoxyReturn}
+
+
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_regexp_checker_a5a34d99e02dba23757f33ce8107a961d_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Граф вызова функции\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_regexp_checker_a5a34d99e02dba23757f33ce8107a961d_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{Regexp\+Checker@{Regexp\+Checker}!op\+\_\+str@{op\+\_\+str}}
+\index{op\+\_\+str@{op\+\_\+str}!Regexp\+Checker@{Regexp\+Checker}}
+\subsubsection[{\texorpdfstring{op\+\_\+str()}{op_str()}}]{\setlength{\rightskip}{0pt plus 5cm}bool Regexp\+Checker\+::op\+\_\+str (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{class_regexp_checker_ad48539a0443212d78e32ff0a23918478}{}\label{class_regexp_checker_ad48539a0443212d78e32ff0a23918478}
+Проверяет на соответствие последовательность литералов
+
+\begin{DoxyReturn}{Возвращает}
+Результат операции 
+\end{DoxyReturn}
+
+
+Граф вызова функции\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_regexp_checker_ad48539a0443212d78e32ff0a23918478_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{Regexp\+Checker@{Regexp\+Checker}!skip\+\_\+op@{skip\+\_\+op}}
+\index{skip\+\_\+op@{skip\+\_\+op}!Regexp\+Checker@{Regexp\+Checker}}
+\subsubsection[{\texorpdfstring{skip\+\_\+op()}{skip_op()}}]{\setlength{\rightskip}{0pt plus 5cm}void Regexp\+Checker\+::skip\+\_\+op (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{class_regexp_checker_adf00606a82e27c614122d001f21f9f96}{}\label{class_regexp_checker_adf00606a82e27c614122d001f21f9f96}
+
+
+Пропускает текущую операцию 
+
+
+
+Граф вызова функции\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_regexp_checker_adf00606a82e27c614122d001f21f9f96_icgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\subsection{Данные класса}
+\index{Regexp\+Checker@{Regexp\+Checker}!btit@{btit}}
+\index{btit@{btit}!Regexp\+Checker@{Regexp\+Checker}}
+\subsubsection[{\texorpdfstring{btit}{btit}}]{\setlength{\rightskip}{0pt plus 5cm}const string\+::const\+\_\+iterator Regexp\+Checker\+::btit\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{class_regexp_checker_a54f557b93e0f498422185294726d129c}{}\label{class_regexp_checker_a54f557b93e0f498422185294726d129c}
+
+
+Итератор, указывающий на место в строке, с которого начинается проверка 
+
+\index{Regexp\+Checker@{Regexp\+Checker}!child@{child}}
+\index{child@{child}!Regexp\+Checker@{Regexp\+Checker}}
+\subsubsection[{\texorpdfstring{child}{child}}]{\setlength{\rightskip}{0pt plus 5cm}bool Regexp\+Checker\+::child\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{class_regexp_checker_a5003c015965ce4177450557c01543812}{}\label{class_regexp_checker_a5003c015965ce4177450557c01543812}
+
+
+Показывает, является ли даный процесс дочерним 
+
+\index{Regexp\+Checker@{Regexp\+Checker}!search@{search}}
+\index{search@{search}!Regexp\+Checker@{Regexp\+Checker}}
+\subsubsection[{\texorpdfstring{search}{search}}]{\setlength{\rightskip}{0pt plus 5cm}bool Regexp\+Checker\+::search\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{class_regexp_checker_a76fa7992eddb6adcd63d9df0e5db1a92}{}\label{class_regexp_checker_a76fa7992eddb6adcd63d9df0e5db1a92}
+
+
+Показывает, находится ли класс в режиме поиска подстроки 
+
+\index{Regexp\+Checker@{Regexp\+Checker}!sv@{sv}}
+\index{sv@{sv}!Regexp\+Checker@{Regexp\+Checker}}
+\subsubsection[{\texorpdfstring{sv}{sv}}]{\setlength{\rightskip}{0pt plus 5cm}const vector$<${\bf token}$>$$\ast$ Regexp\+Checker\+::sv\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{class_regexp_checker_a4542347ee72d793d080b046be483d397}{}\label{class_regexp_checker_a4542347ee72d793d080b046be483d397}
+
+
+Указатель на вектор с преобразованными лексемами 
+
+\index{Regexp\+Checker@{Regexp\+Checker}!svit@{svit}}
+\index{svit@{svit}!Regexp\+Checker@{Regexp\+Checker}}
+\subsubsection[{\texorpdfstring{svit}{svit}}]{\setlength{\rightskip}{0pt plus 5cm}vector$<${\bf token}$>$\+::const\+\_\+iterator Regexp\+Checker\+::svit\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{class_regexp_checker_a9823ceadabc26fe4c9042a86dddb4e34}{}\label{class_regexp_checker_a9823ceadabc26fe4c9042a86dddb4e34}
+
+
+Итератор, используемый для обхода вектора лексем 
+
+\index{Regexp\+Checker@{Regexp\+Checker}!target@{target}}
+\index{target@{target}!Regexp\+Checker@{Regexp\+Checker}}
+\subsubsection[{\texorpdfstring{target}{target}}]{\setlength{\rightskip}{0pt plus 5cm}const string$\ast$ Regexp\+Checker\+::target\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{class_regexp_checker_a9a5672b777e0718a778e9061c3f579e6}{}\label{class_regexp_checker_a9a5672b777e0718a778e9061c3f579e6}
+
+
+Указатель на строку, которую необходимо проверить 
+
+\index{Regexp\+Checker@{Regexp\+Checker}!tit@{tit}}
+\index{tit@{tit}!Regexp\+Checker@{Regexp\+Checker}}
+\subsubsection[{\texorpdfstring{tit}{tit}}]{\setlength{\rightskip}{0pt plus 5cm}string\+::const\+\_\+iterator Regexp\+Checker\+::tit\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{class_regexp_checker_a782456d19baedddca76f23c3efd8cc53}{}\label{class_regexp_checker_a782456d19baedddca76f23c3efd8cc53}
+
+
+Итератор, используемый для перемещения по строке 
+
+
+
+Объявления и описания членов классов находятся в файлах\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_regexp_checker_8h}{Regexp\+Checker.\+h}\item 
+\hyperlink{_regexp_checker_8cpp}{Regexp\+Checker.\+cpp}\end{DoxyCompactItemize}

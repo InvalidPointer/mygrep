@@ -1,0 +1,175 @@
+\hypertarget{class_regexp}{}\section{Класс Regexp}
+\label{class_regexp}\index{Regexp@{Regexp}}
+
+
+Класс регулярного выражения  
+
+
+
+
+{\ttfamily \#include $<$Regexp.\+h$>$}
+
+\subsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_regexp_abde3553b9033fd74f944dba8cdb6b9ea}{Regexp} (const string \&pattern)
+\item 
+\hyperlink{class_regexp_ada3dfc1370864a39089592fbe27ef19d}{$\sim$\+Regexp} ()
+\item 
+bool \hyperlink{class_regexp_a7869806d5707d47742db7ad5129b6585}{match} (const string \&target) const 
+\item 
+\hyperlink{structrc__result}{rc\+\_\+result} \hyperlink{class_regexp_af7c296f94f7577ce0fa662c78268659e}{search} (const string \&target) const 
+\end{DoxyCompactItemize}
+\subsection*{Закрытые данные}
+\begin{DoxyCompactItemize}
+\item 
+vector$<$ \hyperlink{structtoken}{token} $>$ \hyperlink{class_regexp_a784da1e5f4f040a16734c9e3dee089a5}{sv}
+\begin{DoxyCompactList}\small\item\em Вектор с преобразованными лексемами \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Подробное описание}
+Класс регулярного выражения 
+
+Класс регулярного выражения служит для проверки строк на соответствие регулярному выражению и поиска подстроки, соответствующей регулярному выржению, в заданной строке 
+
+\subsection{Конструктор(ы)}
+\index{Regexp@{Regexp}!Regexp@{Regexp}}
+\index{Regexp@{Regexp}!Regexp@{Regexp}}
+\subsubsection[{\texorpdfstring{Regexp(const string \&pattern)}{Regexp(const string &pattern)}}]{\setlength{\rightskip}{0pt plus 5cm}Regexp\+::\+Regexp (
+\begin{DoxyParamCaption}
+\item[{const string \&}]{pattern}
+\end{DoxyParamCaption}
+)}\hypertarget{class_regexp_abde3553b9033fd74f944dba8cdb6b9ea}{}\label{class_regexp_abde3553b9033fd74f944dba8cdb6b9ea}
+Конструктор регулярного выражения 
+\begin{DoxyParams}[1]{Аргументы}
+\mbox{\tt in}  & {\em pattern} & Регулярное выражение в строковом виде \\
+\hline
+\end{DoxyParams}
+
+
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_regexp_abde3553b9033fd74f944dba8cdb6b9ea_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{Regexp@{Regexp}!````~Regexp@{$\sim$\+Regexp}}
+\index{````~Regexp@{$\sim$\+Regexp}!Regexp@{Regexp}}
+\subsubsection[{\texorpdfstring{$\sim$\+Regexp()}{~Regexp()}}]{\setlength{\rightskip}{0pt plus 5cm}Regexp\+::$\sim$\+Regexp (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_regexp_ada3dfc1370864a39089592fbe27ef19d}{}\label{class_regexp_ada3dfc1370864a39089592fbe27ef19d}
+
+
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_regexp_ada3dfc1370864a39089592fbe27ef19d_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\subsection{Методы}
+\index{Regexp@{Regexp}!match@{match}}
+\index{match@{match}!Regexp@{Regexp}}
+\subsubsection[{\texorpdfstring{match(const string \&target) const }{match(const string &target) const }}]{\setlength{\rightskip}{0pt plus 5cm}bool Regexp\+::match (
+\begin{DoxyParamCaption}
+\item[{const string \&}]{target}
+\end{DoxyParamCaption}
+) const}\hypertarget{class_regexp_a7869806d5707d47742db7ad5129b6585}{}\label{class_regexp_a7869806d5707d47742db7ad5129b6585}
+Проверяет строку на соответствие регулярному выражению 
+\begin{DoxyParams}[1]{Аргументы}
+\mbox{\tt in}  & {\em target} & Строка, которую необходимо проверить\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Результат проверки 
+\end{DoxyReturn}
+
+
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_regexp_a7869806d5707d47742db7ad5129b6585_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Граф вызова функции\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=294pt]{class_regexp_a7869806d5707d47742db7ad5129b6585_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{Regexp@{Regexp}!search@{search}}
+\index{search@{search}!Regexp@{Regexp}}
+\subsubsection[{\texorpdfstring{search(const string \&target) const }{search(const string &target) const }}]{\setlength{\rightskip}{0pt plus 5cm}{\bf rc\+\_\+result} Regexp\+::search (
+\begin{DoxyParamCaption}
+\item[{const string \&}]{target}
+\end{DoxyParamCaption}
+) const}\hypertarget{class_regexp_af7c296f94f7577ce0fa662c78268659e}{}\label{class_regexp_af7c296f94f7577ce0fa662c78268659e}
+Ищет подстроку, соответствующую регулярному выражению, в строке 
+\begin{DoxyParams}[1]{Аргументы}
+\mbox{\tt in}  & {\em target} & Строка, в которой производится поиск\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Результат поиска 
+\end{DoxyReturn}
+
+
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_regexp_af7c296f94f7577ce0fa662c78268659e_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Граф вызова функции\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=296pt]{class_regexp_af7c296f94f7577ce0fa662c78268659e_icgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\subsection{Данные класса}
+\index{Regexp@{Regexp}!sv@{sv}}
+\index{sv@{sv}!Regexp@{Regexp}}
+\subsubsection[{\texorpdfstring{sv}{sv}}]{\setlength{\rightskip}{0pt plus 5cm}vector$<${\bf token}$>$ Regexp\+::sv\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{class_regexp_a784da1e5f4f040a16734c9e3dee089a5}{}\label{class_regexp_a784da1e5f4f040a16734c9e3dee089a5}
+
+
+Вектор с преобразованными лексемами 
+
+
+
+Объявления и описания членов классов находятся в файлах\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_regexp_8h}{Regexp.\+h}\item 
+\hyperlink{_regexp_8cpp}{Regexp.\+cpp}\end{DoxyCompactItemize}

@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['lexeme',['lexeme',['../structtoken.html#a9924c7bd1281e815967e0610dbaeaff1',1,'token']]],
-  ['lexicalanalyzer',['LexicalAnalyzer',['../class_lexical_analyzer.html',1,'']]],
-  ['lexicalanalyzer_2eh',['LexicalAnalyzer.h',['../_lexical_analyzer_8h.html',1,'']]]
+  ['flush_5fbuf',['flush_buf',['../class_syntax_analyzer.html#aea363db29fd359d98711018d377f3301',1,'SyntaxAnalyzer']]]
 ];

@@ -1,0 +1,8 @@
+<map id="main.cpp" name="main.cpp">
+<area shape="rect" id="node4" href="$_regexp_8h.html" title="Заголовочный файл класса регулярного выражения " alt="" coords="360,80,437,107"/>
+<area shape="rect" id="node5" href="$_lexical_analyzer_8h.html" title="Заголовочный файл лексического анализатора " alt="" coords="187,155,312,181"/>
+<area shape="rect" id="node11" href="$_syntax_analyzer_8h.html" title="Заголовочный файл синтаксического анализатора " alt="" coords="336,155,461,181"/>
+<area shape="rect" id="node14" href="$_regexp_checker_8h.html" title="Заголовочный файл класса, проверяющего строки " alt="" coords="496,155,621,181"/>
+<area shape="rect" id="node10" href="$token_8h.html" title="Файл с определением структуры лексемы " alt="" coords="91,229,157,256"/>
+<area shape="rect" id="node18" href="$rc__result_8h.html" title="Файл с определением результата работы класса проверки строк " alt="" coords="844,229,927,256"/>
+</map>

@@ -1,0 +1,166 @@
+\hypertarget{class_lexical_analyzer}{}\section{Класс Lexical\+Analyzer}
+\label{class_lexical_analyzer}\index{Lexical\+Analyzer@{Lexical\+Analyzer}}
+
+
+Лексический анализатор  
+
+
+
+
+{\ttfamily \#include $<$Lexical\+Analyzer.\+h$>$}
+
+\subsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_lexical_analyzer_a1934aa8efdd1b1b7d31ecc245838d995}{Lexical\+Analyzer} ()
+\item 
+\hyperlink{class_lexical_analyzer_ac14482de40e9c91619739c8dcd6e8292}{$\sim$\+Lexical\+Analyzer} ()
+\end{DoxyCompactItemize}
+\subsection*{Открытые статические члены}
+\begin{DoxyCompactItemize}
+\item 
+static vector$<$ \hyperlink{structtoken}{token} $>$ \hyperlink{class_lexical_analyzer_afd35f07227fd40638e9d145ee6413640}{analyze} (const string \&s)
+\end{DoxyCompactItemize}
+\subsection*{Закрытые статические члены}
+\begin{DoxyCompactItemize}
+\item 
+static bool \hyperlink{class_lexical_analyzer_a24d338442e8205f00690565bd2157ebc}{isspecial} (char ch)
+\item 
+static string \hyperlink{class_lexical_analyzer_a9e124ea0dcdfccc94f17ecc99aac6206}{is\+\_\+num} (const string \&s)
+\end{DoxyCompactItemize}
+
+
+\subsection{Подробное описание}
+Лексический анализатор 
+
+Лексический анализатор преобразует исходное регулярное выражение в последовательность лексем, проверяя экранирование специальных символов. 
+
+\subsection{Конструктор(ы)}
+\index{Lexical\+Analyzer@{Lexical\+Analyzer}!Lexical\+Analyzer@{Lexical\+Analyzer}}
+\index{Lexical\+Analyzer@{Lexical\+Analyzer}!Lexical\+Analyzer@{Lexical\+Analyzer}}
+\subsubsection[{\texorpdfstring{Lexical\+Analyzer()}{LexicalAnalyzer()}}]{\setlength{\rightskip}{0pt plus 5cm}Lexical\+Analyzer\+::\+Lexical\+Analyzer (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_lexical_analyzer_a1934aa8efdd1b1b7d31ecc245838d995}{}\label{class_lexical_analyzer_a1934aa8efdd1b1b7d31ecc245838d995}
+\index{Lexical\+Analyzer@{Lexical\+Analyzer}!````~Lexical\+Analyzer@{$\sim$\+Lexical\+Analyzer}}
+\index{````~Lexical\+Analyzer@{$\sim$\+Lexical\+Analyzer}!Lexical\+Analyzer@{Lexical\+Analyzer}}
+\subsubsection[{\texorpdfstring{$\sim$\+Lexical\+Analyzer()}{~LexicalAnalyzer()}}]{\setlength{\rightskip}{0pt plus 5cm}Lexical\+Analyzer\+::$\sim$\+Lexical\+Analyzer (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_lexical_analyzer_ac14482de40e9c91619739c8dcd6e8292}{}\label{class_lexical_analyzer_ac14482de40e9c91619739c8dcd6e8292}
+
+
+\subsection{Методы}
+\index{Lexical\+Analyzer@{Lexical\+Analyzer}!analyze@{analyze}}
+\index{analyze@{analyze}!Lexical\+Analyzer@{Lexical\+Analyzer}}
+\subsubsection[{\texorpdfstring{analyze(const string \&s)}{analyze(const string &s)}}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ {\bf token} $>$ Lexical\+Analyzer\+::analyze (
+\begin{DoxyParamCaption}
+\item[{const string \&}]{s}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{class_lexical_analyzer_afd35f07227fd40638e9d145ee6413640}{}\label{class_lexical_analyzer_afd35f07227fd40638e9d145ee6413640}
+Производит лексический анализ регулярного выражения 
+\begin{DoxyParams}[1]{Аргументы}
+\mbox{\tt in}  & {\em s} & Анализируемое выражение\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Вектор, составленный из лексем регулярного выражения
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Исключения}
+{\em std\+::invalid\+\_\+argument} & В случае некорректных входных данных \\
+\hline
+\end{DoxyExceptions}
+
+
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_lexical_analyzer_afd35f07227fd40638e9d145ee6413640_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Граф вызова функции\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=330pt]{class_lexical_analyzer_afd35f07227fd40638e9d145ee6413640_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{Lexical\+Analyzer@{Lexical\+Analyzer}!is\+\_\+num@{is\+\_\+num}}
+\index{is\+\_\+num@{is\+\_\+num}!Lexical\+Analyzer@{Lexical\+Analyzer}}
+\subsubsection[{\texorpdfstring{is\+\_\+num(const string \&s)}{is_num(const string &s)}}]{\setlength{\rightskip}{0pt plus 5cm}string Lexical\+Analyzer\+::is\+\_\+num (
+\begin{DoxyParamCaption}
+\item[{const string \&}]{s}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\hypertarget{class_lexical_analyzer_a9e124ea0dcdfccc94f17ecc99aac6206}{}\label{class_lexical_analyzer_a9e124ea0dcdfccc94f17ecc99aac6206}
+Проверяет, является ли строка числом 
+\begin{DoxyParams}[1]{Аргументы}
+\mbox{\tt in}  & {\em s} & Проверяемая строка\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Та же строка
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Исключения}
+{\em std\+::invalid\+\_\+argument} & В случае, если строка не является числом \\
+\hline
+{\em std\+::out\+\_\+of\+\_\+range} & В случае, если записанное в строке число не может поместиться в тип int \\
+\hline
+\end{DoxyExceptions}
+
+
+Граф вызова функции\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_lexical_analyzer_a9e124ea0dcdfccc94f17ecc99aac6206_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{Lexical\+Analyzer@{Lexical\+Analyzer}!isspecial@{isspecial}}
+\index{isspecial@{isspecial}!Lexical\+Analyzer@{Lexical\+Analyzer}}
+\subsubsection[{\texorpdfstring{isspecial(char ch)}{isspecial(char ch)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Lexical\+Analyzer\+::isspecial (
+\begin{DoxyParamCaption}
+\item[{char}]{ch}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\hypertarget{class_lexical_analyzer_a24d338442e8205f00690565bd2157ebc}{}\label{class_lexical_analyzer_a24d338442e8205f00690565bd2157ebc}
+Проверяет, является ли символ специальным 
+\begin{DoxyParams}[1]{Аргументы}
+\mbox{\tt in}  & {\em ch} & Проверяемый символ\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Результат проверки 
+\end{DoxyReturn}
+
+
+Граф вызова функции\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_lexical_analyzer_a24d338442e8205f00690565bd2157ebc_icgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Объявления и описания членов классов находятся в файлах\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_lexical_analyzer_8h}{Lexical\+Analyzer.\+h}\item 
+\hyperlink{_lexical_analyzer_8cpp}{Lexical\+Analyzer.\+cpp}\end{DoxyCompactItemize}

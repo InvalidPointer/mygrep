@@ -1,0 +1,11 @@
+<map id="token.h" name="token.h">
+<area shape="rect" id="node2" href="$_lexical_analyzer_8h.html" title="Заголовочный файл лексического анализатора " alt="" coords="69,80,195,107"/>
+<area shape="rect" id="node7" href="$_syntax_analyzer_8h.html" title="Заголовочный файл синтаксического анализатора " alt="" coords="219,80,344,107"/>
+<area shape="rect" id="node9" href="$_regexp_checker_8h.html" title="Заголовочный файл класса, проверяющего строки " alt="" coords="368,80,493,107"/>
+<area shape="rect" id="node3" href="$_lexical_analyzer_8cpp.html" title="LexicalAnalyzer.cpp" alt="" coords="5,155,144,181"/>
+<area shape="rect" id="node4" href="$_regexp_8h.html" title="Заголовочный файл класса регулярного выражения " alt="" coords="168,155,245,181"/>
+<area shape="rect" id="node5" href="$main_8cpp.html" title="main.cpp" alt="" coords="116,229,191,256"/>
+<area shape="rect" id="node6" href="$_regexp_8cpp.html" title="Regexp.cpp" alt="" coords="215,229,305,256"/>
+<area shape="rect" id="node8" href="$_syntax_analyzer_8cpp.html" title="SyntaxAnalyzer.cpp" alt="" coords="269,155,408,181"/>
+<area shape="rect" id="node10" href="$_regexp_checker_8cpp.html" title="RegexpChecker.cpp" alt="" coords="432,155,571,181"/>
+</map>

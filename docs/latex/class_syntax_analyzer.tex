@@ -1,0 +1,279 @@
+\hypertarget{class_syntax_analyzer}{}\section{Класс Syntax\+Analyzer}
+\label{class_syntax_analyzer}\index{Syntax\+Analyzer@{Syntax\+Analyzer}}
+
+
+Синтаксический анализатор  
+
+
+
+
+{\ttfamily \#include $<$Syntax\+Analyzer.\+h$>$}
+
+\subsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_syntax_analyzer_af4bb6b4b5a638914d5851082dd7a1669}{Syntax\+Analyzer} (const vector$<$ \hyperlink{structtoken}{token} $>$ \&tokens)
+\item 
+\hyperlink{class_syntax_analyzer_a29b52995ad07154244f129673dae5a01}{$\sim$\+Syntax\+Analyzer} ()
+\item 
+vector$<$ \hyperlink{structtoken}{token} $>$ \hyperlink{class_syntax_analyzer_a04fbf355b2afe30ef814048ecb029cf2}{analyze} ()
+\end{DoxyCompactItemize}
+\subsection*{Закрытые члены}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_syntax_analyzer_a76c8c49d5154b9b48b11d241577420e4}{init} ()
+\begin{DoxyCompactList}\small\item\em Инициализирует анализатор \end{DoxyCompactList}\item 
+void \hyperlink{class_syntax_analyzer_a1b42fab3f30284bf29a7eff2f3e8382f}{E} (bool last=false)
+\item 
+bool \hyperlink{class_syntax_analyzer_a7a94734bb42224681a23045c45cd9ca3}{O} (int pos=-\/1)
+\item 
+bool \hyperlink{class_syntax_analyzer_aea363db29fd359d98711018d377f3301}{flush\+\_\+buf} (int pos=-\/1)
+\end{DoxyCompactItemize}
+\subsection*{Закрытые данные}
+\begin{DoxyCompactItemize}
+\item 
+vector$<$ \hyperlink{structtoken}{token} $>$ \hyperlink{class_syntax_analyzer_aea5a27bee70623ed8bf91972938d39af}{raw\+\_\+tokens}
+\begin{DoxyCompactList}\small\item\em Вектор исходных лексем \end{DoxyCompactList}\item 
+vector$<$ \hyperlink{structtoken}{token} $>$ \hyperlink{class_syntax_analyzer_aadc7ff59a663670756f4ab5e81f7d99a}{pf\+\_\+tokens}
+\begin{DoxyCompactList}\small\item\em Вектор с преобразованными лексемами \end{DoxyCompactList}\item 
+vector$<$ \hyperlink{structtoken}{token} $>$\+::iterator \hyperlink{class_syntax_analyzer_a38e0d3b67ddaa431c1b200f2ad383e61}{it}
+\begin{DoxyCompactList}\small\item\em Итератор, используемый для обхода вектора исходных лексем \end{DoxyCompactList}\item 
+int \hyperlink{class_syntax_analyzer_a9ad8571c7819ba91db174772d3fbfbd9}{brackets\+\_\+count}
+\begin{DoxyCompactList}\small\item\em Количество незакрытых скобок \end{DoxyCompactList}\item 
+string \hyperlink{class_syntax_analyzer_a5b6fe22c4940c5560de49bebe38768e8}{buf}
+\begin{DoxyCompactList}\small\item\em Буфер, используемый для объединения подряд идущих последовательностей литералов \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Подробное описание}
+Синтаксический анализатор 
+
+Синтаксический анализатор преобразует последовательность лексем, полученную от лексического анализатора, в префиксную форму, проверяя синтаксис регулярного выражения 
+
+\subsection{Конструктор(ы)}
+\index{Syntax\+Analyzer@{Syntax\+Analyzer}!Syntax\+Analyzer@{Syntax\+Analyzer}}
+\index{Syntax\+Analyzer@{Syntax\+Analyzer}!Syntax\+Analyzer@{Syntax\+Analyzer}}
+\subsubsection[{\texorpdfstring{Syntax\+Analyzer(const vector$<$ token $>$ \&tokens)}{SyntaxAnalyzer(const vector< token > &tokens)}}]{\setlength{\rightskip}{0pt plus 5cm}Syntax\+Analyzer\+::\+Syntax\+Analyzer (
+\begin{DoxyParamCaption}
+\item[{const vector$<$ {\bf token} $>$ \&}]{tokens}
+\end{DoxyParamCaption}
+)}\hypertarget{class_syntax_analyzer_af4bb6b4b5a638914d5851082dd7a1669}{}\label{class_syntax_analyzer_af4bb6b4b5a638914d5851082dd7a1669}
+Конструктор синтаксического анализатора 
+\begin{DoxyParams}[1]{Аргументы}
+\mbox{\tt in}  & {\em tokens} & Вектор лексем, подлежащий обработке \\
+\hline
+\end{DoxyParams}
+
+
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_syntax_analyzer_af4bb6b4b5a638914d5851082dd7a1669_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{Syntax\+Analyzer@{Syntax\+Analyzer}!````~Syntax\+Analyzer@{$\sim$\+Syntax\+Analyzer}}
+\index{````~Syntax\+Analyzer@{$\sim$\+Syntax\+Analyzer}!Syntax\+Analyzer@{Syntax\+Analyzer}}
+\subsubsection[{\texorpdfstring{$\sim$\+Syntax\+Analyzer()}{~SyntaxAnalyzer()}}]{\setlength{\rightskip}{0pt plus 5cm}Syntax\+Analyzer\+::$\sim$\+Syntax\+Analyzer (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_syntax_analyzer_a29b52995ad07154244f129673dae5a01}{}\label{class_syntax_analyzer_a29b52995ad07154244f129673dae5a01}
+
+
+\subsection{Методы}
+\index{Syntax\+Analyzer@{Syntax\+Analyzer}!analyze@{analyze}}
+\index{analyze@{analyze}!Syntax\+Analyzer@{Syntax\+Analyzer}}
+\subsubsection[{\texorpdfstring{analyze()}{analyze()}}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ {\bf token} $>$ Syntax\+Analyzer\+::analyze (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_syntax_analyzer_a04fbf355b2afe30ef814048ecb029cf2}{}\label{class_syntax_analyzer_a04fbf355b2afe30ef814048ecb029cf2}
+Производит синтаксический анализ регулярного выражения
+
+\begin{DoxyReturn}{Возвращает}
+Вектор из лексем, который является префиксной записью регулярного выражения 
+\end{DoxyReturn}
+
+
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_syntax_analyzer_a04fbf355b2afe30ef814048ecb029cf2_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Граф вызова функции\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=330pt]{class_syntax_analyzer_a04fbf355b2afe30ef814048ecb029cf2_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{Syntax\+Analyzer@{Syntax\+Analyzer}!E@{E}}
+\index{E@{E}!Syntax\+Analyzer@{Syntax\+Analyzer}}
+\subsubsection[{\texorpdfstring{E(bool last=false)}{E(bool last=false)}}]{\setlength{\rightskip}{0pt plus 5cm}void Syntax\+Analyzer\+::E (
+\begin{DoxyParamCaption}
+\item[{bool}]{last = {\ttfamily false}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{class_syntax_analyzer_a1b42fab3f30284bf29a7eff2f3e8382f}{}\label{class_syntax_analyzer_a1b42fab3f30284bf29a7eff2f3e8382f}
+Проверяет выражение и преобразовывает его в префиксную форму 
+\begin{DoxyParams}[1]{Аргументы}
+\mbox{\tt in}  & {\em last} & Показывает, надо ли останавливаться перед проверкой бинарной операции перечисления \\
+\hline
+\end{DoxyParams}
+
+
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=344pt]{class_syntax_analyzer_a1b42fab3f30284bf29a7eff2f3e8382f_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Граф вызова функции\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_syntax_analyzer_a1b42fab3f30284bf29a7eff2f3e8382f_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{Syntax\+Analyzer@{Syntax\+Analyzer}!flush\+\_\+buf@{flush\+\_\+buf}}
+\index{flush\+\_\+buf@{flush\+\_\+buf}!Syntax\+Analyzer@{Syntax\+Analyzer}}
+\subsubsection[{\texorpdfstring{flush\+\_\+buf(int pos=-\/1)}{flush_buf(int pos=-1)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Syntax\+Analyzer\+::flush\+\_\+buf (
+\begin{DoxyParamCaption}
+\item[{int}]{pos = {\ttfamily -\/1}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{class_syntax_analyzer_aea363db29fd359d98711018d377f3301}{}\label{class_syntax_analyzer_aea363db29fd359d98711018d377f3301}
+Очищает буфер, занося его содержимое в вектор преобразованных лексем 
+\begin{DoxyParams}[1]{Аргументы}
+\mbox{\tt in}  & {\em pos} & Позиция, куда необходимо вставить содержимое буфера\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Заполненность буфера на момент вызова 
+\end{DoxyReturn}
+
+
+Граф вызова функции\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_syntax_analyzer_aea363db29fd359d98711018d377f3301_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{Syntax\+Analyzer@{Syntax\+Analyzer}!init@{init}}
+\index{init@{init}!Syntax\+Analyzer@{Syntax\+Analyzer}}
+\subsubsection[{\texorpdfstring{init()}{init()}}]{\setlength{\rightskip}{0pt plus 5cm}void Syntax\+Analyzer\+::init (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{class_syntax_analyzer_a76c8c49d5154b9b48b11d241577420e4}{}\label{class_syntax_analyzer_a76c8c49d5154b9b48b11d241577420e4}
+
+
+Инициализирует анализатор 
+
+
+
+Граф вызова функции\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_syntax_analyzer_a76c8c49d5154b9b48b11d241577420e4_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{Syntax\+Analyzer@{Syntax\+Analyzer}!O@{O}}
+\index{O@{O}!Syntax\+Analyzer@{Syntax\+Analyzer}}
+\subsubsection[{\texorpdfstring{O(int pos=-\/1)}{O(int pos=-1)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Syntax\+Analyzer\+::O (
+\begin{DoxyParamCaption}
+\item[{int}]{pos = {\ttfamily -\/1}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{class_syntax_analyzer_a7a94734bb42224681a23045c45cd9ca3}{}\label{class_syntax_analyzer_a7a94734bb42224681a23045c45cd9ca3}
+Проверяет наличие операций и добавляет их в вектор лексем 
+\begin{DoxyParams}[1]{Аргументы}
+\mbox{\tt in}  & {\em pos} & Позиция, куда необходимо вставить операции\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Наличие операций 
+\end{DoxyReturn}
+
+
+Граф вызова функции\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_syntax_analyzer_a7a94734bb42224681a23045c45cd9ca3_icgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\subsection{Данные класса}
+\index{Syntax\+Analyzer@{Syntax\+Analyzer}!brackets\+\_\+count@{brackets\+\_\+count}}
+\index{brackets\+\_\+count@{brackets\+\_\+count}!Syntax\+Analyzer@{Syntax\+Analyzer}}
+\subsubsection[{\texorpdfstring{brackets\+\_\+count}{brackets_count}}]{\setlength{\rightskip}{0pt plus 5cm}int Syntax\+Analyzer\+::brackets\+\_\+count\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{class_syntax_analyzer_a9ad8571c7819ba91db174772d3fbfbd9}{}\label{class_syntax_analyzer_a9ad8571c7819ba91db174772d3fbfbd9}
+
+
+Количество незакрытых скобок 
+
+\index{Syntax\+Analyzer@{Syntax\+Analyzer}!buf@{buf}}
+\index{buf@{buf}!Syntax\+Analyzer@{Syntax\+Analyzer}}
+\subsubsection[{\texorpdfstring{buf}{buf}}]{\setlength{\rightskip}{0pt plus 5cm}string Syntax\+Analyzer\+::buf\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{class_syntax_analyzer_a5b6fe22c4940c5560de49bebe38768e8}{}\label{class_syntax_analyzer_a5b6fe22c4940c5560de49bebe38768e8}
+
+
+Буфер, используемый для объединения подряд идущих последовательностей литералов 
+
+\index{Syntax\+Analyzer@{Syntax\+Analyzer}!it@{it}}
+\index{it@{it}!Syntax\+Analyzer@{Syntax\+Analyzer}}
+\subsubsection[{\texorpdfstring{it}{it}}]{\setlength{\rightskip}{0pt plus 5cm}vector$<${\bf token}$>$\+::iterator Syntax\+Analyzer\+::it\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{class_syntax_analyzer_a38e0d3b67ddaa431c1b200f2ad383e61}{}\label{class_syntax_analyzer_a38e0d3b67ddaa431c1b200f2ad383e61}
+
+
+Итератор, используемый для обхода вектора исходных лексем 
+
+\index{Syntax\+Analyzer@{Syntax\+Analyzer}!pf\+\_\+tokens@{pf\+\_\+tokens}}
+\index{pf\+\_\+tokens@{pf\+\_\+tokens}!Syntax\+Analyzer@{Syntax\+Analyzer}}
+\subsubsection[{\texorpdfstring{pf\+\_\+tokens}{pf_tokens}}]{\setlength{\rightskip}{0pt plus 5cm}vector$<${\bf token}$>$ Syntax\+Analyzer\+::pf\+\_\+tokens\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{class_syntax_analyzer_aadc7ff59a663670756f4ab5e81f7d99a}{}\label{class_syntax_analyzer_aadc7ff59a663670756f4ab5e81f7d99a}
+
+
+Вектор с преобразованными лексемами 
+
+\index{Syntax\+Analyzer@{Syntax\+Analyzer}!raw\+\_\+tokens@{raw\+\_\+tokens}}
+\index{raw\+\_\+tokens@{raw\+\_\+tokens}!Syntax\+Analyzer@{Syntax\+Analyzer}}
+\subsubsection[{\texorpdfstring{raw\+\_\+tokens}{raw_tokens}}]{\setlength{\rightskip}{0pt plus 5cm}vector$<${\bf token}$>$ Syntax\+Analyzer\+::raw\+\_\+tokens\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{class_syntax_analyzer_aea5a27bee70623ed8bf91972938d39af}{}\label{class_syntax_analyzer_aea5a27bee70623ed8bf91972938d39af}
+
+
+Вектор исходных лексем 
+
+
+
+Объявления и описания членов классов находятся в файлах\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_syntax_analyzer_8h}{Syntax\+Analyzer.\+h}\item 
+\hyperlink{_syntax_analyzer_8cpp}{Syntax\+Analyzer.\+cpp}\end{DoxyCompactItemize}

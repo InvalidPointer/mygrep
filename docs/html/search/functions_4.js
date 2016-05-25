@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['search',['search',['../class_regexp.html#af7c296f94f7577ce0fa662c78268659e',1,'Regexp']]],
-  ['syntaxanalyzer',['SyntaxAnalyzer',['../class_syntax_analyzer.html#af4bb6b4b5a638914d5851082dd7a1669',1,'SyntaxAnalyzer']]]
+  ['init',['init',['../class_syntax_analyzer.html#a76c8c49d5154b9b48b11d241577420e4',1,'SyntaxAnalyzer']]],
+  ['is_5fnum',['is_num',['../class_lexical_analyzer.html#a9e124ea0dcdfccc94f17ecc99aac6206',1,'LexicalAnalyzer']]],
+  ['isspecial',['isspecial',['../class_lexical_analyzer.html#a24d338442e8205f00690565bd2157ebc',1,'LexicalAnalyzer']]]
 ];
