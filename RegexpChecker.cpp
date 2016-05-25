@@ -124,8 +124,11 @@ bool RegexpChecker::op_iter(int min, int max)
             tit = prev_tit;
             return true;
         }
+
         svit = base_it;
         iter_count++;
+
+        prev_tit = tit;
 
         if (!check_op()) {
             break;
@@ -134,7 +137,6 @@ bool RegexpChecker::op_iter(int min, int max)
         if (prev_tit == tit) {
             break;
         }
-        prev_tit = tit;
     } while (max == -1 || iter_count <= max);
 
     if (found) {
