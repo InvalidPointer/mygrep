@@ -4,6 +4,10 @@
  * \author InvalidPointer
  *
  * Данный файл содержит в себе определение класса синтаксического анализатора
+ *
+ * Грамматика, которую использует анализатор:
+ * E -> (E)O | EE | {literal}O | E\|E
+ * O -> *O | {,n}O | {m,}O | _
 */
 #ifndef MYGREP_SYNTAXANALYZER_H
 #define MYGREP_SYNTAXANALYZER_H
