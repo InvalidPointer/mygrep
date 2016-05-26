@@ -17,7 +17,7 @@ int main(int argc, char **argv)
         if (argc == 3) {
             if (!strcmp(argv[2], "search")) {
                 string str;
-                while (cin >> str) {
+                while (getline(cin, str)) {
                     rc_result res = r.search(str);
                     if (res.status) {
                         cout << res.result << endl;
@@ -29,7 +29,7 @@ int main(int argc, char **argv)
             }
         } else {
             string str;
-            while (cin >> str) {
+            while (getline(cin, str)) {
                 if (r.match(str)) {
                     cout << str << endl;
                 }

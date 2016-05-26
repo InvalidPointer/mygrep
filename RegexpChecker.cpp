@@ -13,7 +13,7 @@ RegexpChecker::RegexpChecker(const vector<token> *v, const string *s, string::co
 
 rc_result RegexpChecker::check()
 {
-    for ( ; svit < sv->end() && tit < target->end(); ) {
+    for ( ; svit < sv->end(); ) {
         if (!check_op()) {
             if (child) {
                 exit(0);
@@ -21,6 +21,8 @@ rc_result RegexpChecker::check()
 
             return rc_result {false, ""};
         }
+
+        if (tit >= target->end()) break;
     }
 
     if (child) {
